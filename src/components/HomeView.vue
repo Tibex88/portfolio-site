@@ -9,11 +9,13 @@ import SkillsSection from './SkillsSection.vue'
 </script>
 
 <template>
-  <main class="home-view">
+  <main
+    class="mx-auto min-h-screen w-[min(var(--content-max),calc(100%-calc(var(--frame-gutter)*2)))] px-0 pt-6 pb-8 min-[810px]:pt-7 min-[810px]:pb-10 min-[1310px]:pt-8"
+  >
     <CustomCursor />
     <AboutOverlay />
     <HeroBoard />
-    <section class="portfolio-layout">
+    <section class="block">
       <ProjectStream />
     </section>
     <SkillsSection />

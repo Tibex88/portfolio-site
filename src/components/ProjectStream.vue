@@ -8,9 +8,11 @@ const { projectItems } = storeToRefs(store)
 </script>
 
 <template>
-  <section class="project-stream">
-    <div class="project-stream__header">
-      <p class="project-stream__title">Selected Projects</p>
+  <section class="grid grid-cols-1 gap-[18px]">
+    <div class="mb-1">
+      <p class="m-0 font-[var(--display-font)] text-[34px] leading-[0.92] tracking-[0.06em] uppercase text-[#0a223a] min-[810px]:text-[44px] min-[1310px]:text-[56px]">
+        Selected Projects
+      </p>
     </div>
     <ProjectCard
       v-for="(project, index) in projectItems"
