@@ -16,8 +16,8 @@ import SkillsSection from './SkillsSection.vue'
     <section class="portfolio-layout">
       <ProjectStream />
     </section>
-    <ExperienceTimeline />
     <SkillsSection />
+    <ExperienceTimeline />
     <PortfolioFooter />
   </main>
 </template>

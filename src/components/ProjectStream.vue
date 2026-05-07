@@ -17,6 +17,7 @@ const { projectItems } = storeToRefs(store)
       :key="project.id"
       :project="project"
       :index="index"
+      :show-ampersand="index < projectItems.length - 1"
     />
   </section>
 </template>

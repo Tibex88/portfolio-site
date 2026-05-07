@@ -20,18 +20,20 @@ const skillCards = computed(() =>
 <template>
   <section class="skills-section">
     <h2 class="section-title">Technical Skills</h2>
-    <div class="skills-scroller">
-      <div class="skills-list">
-      <article v-for="skill in skillCards" :key="skill.id" class="skills-card">
-        <span class="skills-card__tape skills-card__tape--left" />
-        <span class="skills-card__tape skills-card__tape--right" />
-        <span class="skills-card__tape skills-card__tape--bottom-left" />
-        <span class="skills-card__tape skills-card__tape--bottom-right" />
-        <div class="skills-card__frame">
-          <p class="skills-card__title">{{ skill.title }}</p>
-          <p class="skills-card__group">{{ skill.group }}</p>
+    <div class="skills-overflow">
+      <div class="skills-scroller">
+        <div class="skills-list">
+          <article v-for="skill in skillCards" :key="skill.id" class="skills-card">
+            <span class="skills-card__tape skills-card__tape--left" />
+            <span class="skills-card__tape skills-card__tape--right" />
+            <span class="skills-card__tape skills-card__tape--bottom-left" />
+            <span class="skills-card__tape skills-card__tape--bottom-right" />
+            <div class="skills-card__frame">
+              <p class="skills-card__title">{{ skill.title }}</p>
+              <p class="skills-card__group">{{ skill.group }}</p>
+            </div>
+          </article>
         </div>
-      </article>
       </div>
     </div>
   </section>

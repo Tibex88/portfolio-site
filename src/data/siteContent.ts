@@ -70,7 +70,7 @@ export interface SkillGroup {
 export const projects: ProjectItem[] = [
   {
     id: 'et-delivery',
-    title: 'ET Delivery Backend API',
+    title: 'ET Delivery',
     timeline: 'Dec 2024 - Jul 2025',
     summary:
       'Dispatch, booking lifecycle, payments, logistics reporting, and backend operations for a production-oriented mobility platform.',
@@ -82,8 +82,8 @@ export const projects: ProjectItem[] = [
     assetIds: ['asset-project-et-delivery', 'asset-note-dispatch'],
   },
   {
-    id: 'therapy-platform',
-    title: 'Mental Health / Therapy Platform Backend',
+    id: 'Navi Thera',
+    title: 'Mental Health / Therapy Platform ',
     timeline: 'Apr 2025 - Apr 2026',
     summary:
       'Sessions, subscriptions, chat/call infrastructure, therapist operations, and healthcare integration planning.',
@@ -96,7 +96,7 @@ export const projects: ProjectItem[] = [
   },
   {
     id: 'ebp',
-    title: 'EBP E-commerce Backend + Recommendation System',
+    title: 'ETHIO Best Price',
     timeline: 'Apr 2025 - Jul 2025',
     summary:
       'Marketplace backend with cart/checkout flows and Neo4j-based recommendation infrastructure.',
@@ -255,7 +255,7 @@ export const skillGroups: SkillGroup[] = [
   {
     id: 'backend',
     title: 'Frameworks & Backend',
-    items: ['NestJS', 'REST APIs', 'Backend Service Architecture', 'Modular System Design'],
+    items: ['NestJS', 'REST APIs', 'Modular System Design'],
   },
   {
     id: 'data',

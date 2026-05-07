@@ -3,6 +3,8 @@
   --bg: #7d8c7f;
   --panel: #b0c6b3;
   --paper: #e4eddc;
+  --reference-dark: #030303;
+  --reference-light: #c2d0be;
   --line: rgba(0, 0, 0, 0.48);
   --text: #000000;
   --muted: rgba(0, 0, 0, 0.75);
@@ -117,12 +119,14 @@ h2 {
 .hero-board {
   padding: 62px 28px 18px;
   margin-bottom: 28px;
+  background: var(--reference-dark);
+  color: var(--reference-light);
 }
 
 .hero-board__eyebrow {
   max-width: 940px;
   margin-bottom: 14px;
-  color: #0a223a;
+  color: var(--reference-light);
   font-size: clamp(1.3rem, 2vw, 2.1rem);
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -131,7 +135,7 @@ h2 {
 
 .hero-board__nameplate {
   padding-bottom: 16px;
-  border-bottom: 2px solid rgba(10, 34, 58, 0.35);
+  border-bottom: 2px solid rgba(194, 208, 190, 0.95);
 }
 
 .hero-board__name-line {
@@ -163,7 +167,7 @@ h2 {
 
 .hero-board__subtitle {
   margin-top: 8px;
-  color: #0a223a;
+  color: var(--reference-light);
   font-family: "Brush Script MT", "Segoe Script", cursive;
   font-size: clamp(1.8rem, 3vw, 3.2rem);
 }
@@ -183,7 +187,7 @@ h2 {
   min-height: 74px;
   padding: 14px 16px;
   border-radius: 10px;
-  background: #a7c6ce;
+  background: #afc6b3;
   border: 2px solid transparent;
   color: #0a223a;
   text-decoration: none;
@@ -408,11 +412,30 @@ h2 {
   z-index: 1;
 }
 
+.project-card__ampersand {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  z-index: 2;
+  width: clamp(120px, 26%, 180px);
+  transform: translateY(-50%);
+  opacity: 0.98;
+  pointer-events: none;
+  display: none; /* Hidden by default, can be shown by adding a class or via JavaScript */
+}
+
+.project-card__ampersand-svg {
+  display: hidden;
+  width: 100%;
+  height: auto;
+  z-index: 100000;
+}
+
 .project-card__lock {
   position: absolute;
   top: 18px;
   right: 18px;
-  z-index: 2;
+  z-index: 3;
   font-size: 1.1rem;
 }
 
@@ -574,29 +597,31 @@ h2 {
 }
 
 .portfolio-footer {
-  margin-top: 30px;
-  padding: 36px 28px 26px;
+  margin-top: 20px;
+  padding: 24px 18px 18px;
+  border-radius: 8px;
 }
 
 .portfolio-footer__line {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px 28px;
   justify-content: center;
-  color: #a7c6ce;
-  font-size: clamp(1.4rem, 2vw, 2.2rem);
+  color: #afc6b3;
+  font-size: clamp(0.9rem, 1.7vw, 1.45rem);
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
+  line-height: 1.12;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .reference-card--footer {
-  background: rgba(228, 237, 220, 0.92);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08) inset;
+  background: var(--reference-dark);
 }
 
 .reference-card--footer .portfolio-footer__line {
-  color: #0a223a;
+  color: var(--reference-light);
 }
 
 .section-title {
@@ -718,28 +743,53 @@ h2 {
   margin-top: 6px;
 }
 
+.skills-section {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.skills-section .section-title {
+  width: min(calc(100% - 48px), var(--max-width));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.skills-overflow {
+  overflow: visible;
+  padding: 8px 0 22px;
+}
+
 .skills-list {
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, max-content);
   grid-auto-columns: minmax(250px, 290px);
   gap: 20px 20px;
   min-width: max-content;
-  padding: 14px 4px 20px;
+  padding: 14px 24px 20px;
+  align-items: start;
+  overflow: visible;
 }
 
 .skills-scroller {
   overflow-x: auto;
-  overflow-y: visible;
-  padding: 0 6px 8px;
+  overflow-y: hidden;
+  width: 100vw;
+  padding: 22px 0 8px;
+  margin-top: -22px;
 }
 
 .skills-card {
   position: relative;
   min-height: 190px;
+  align-self: start;
   padding: 16px 16px 10px;
   background: transparent;
   transform: rotate(var(--card-tilt, 0deg));
+  overflow: visible;
 }
 
 .skills-card:nth-child(3n + 1) {
@@ -756,32 +806,32 @@ h2 {
 
 .skills-card__tape {
   position: absolute;
-  width: 78px;
-  height: 20px;
+  width: clamp(56px, 22%, 78px);
+  height: clamp(14px, 5vw, 20px);
   background: #050505;
-  z-index: 2;
+  z-index: 3;
 }
 
 .skills-card__tape--left {
-  top: -2px;
-  left: -8px;
+  top: 14px;
+  left: 8px;
   transform: rotate(-42deg);
 }
 
 .skills-card__tape--right {
-  top: -2px;
-  right: -8px;
+  top: 14px;
+  right: 8px;
   transform: rotate(42deg);
 }
 
 .skills-card__tape--bottom-left {
   bottom: 6px;
-  left: -8px;
+  left: 8px;
   transform: rotate(42deg);
 }
 
 .skills-card__tape--bottom-right {
-  right: -8px;
+  right: 8px;
   bottom: 6px;
   transform: rotate(-42deg);
 }
@@ -808,11 +858,31 @@ h2 {
 }
 
 .skills-card__group {
-  margin: 14px 0 0;
-  color: rgba(0, 0, 0, 0.75);
-  font-family: "Arial Narrow", Arial, Helvetica, sans-serif;
-  font-size: 0.8rem;
-  line-height: 1.2;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  z-index: 4;
+  margin: 0;
+  padding: 8px 16px 10px;
+  border-radius: 18px;
+  background: var(--accent);
+  color: #050505;
+  font-family: "Brush Script MT", "Segoe Script", "Marker Felt", cursive;
+  font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-8px) rotate(-2deg);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.16);
+}
+
+.skills-card:hover .skills-card__group {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) rotate(0deg);
 }
 
 .about-overlay {
@@ -830,6 +900,8 @@ h2 {
   margin: 0 auto;
   padding: 48px 28px 28px;
   overflow: auto;
+  background: var(--reference-dark);
+  color: var(--reference-light);
 }
 
 .about-overlay__close {
@@ -837,7 +909,7 @@ h2 {
   padding: 0;
   border: 0;
   background: transparent;
-  color: #0a223a;
+  color: var(--reference-light);
   font-family: "Brush Script MT", "Segoe Script", cursive;
   font-size: clamp(2.4rem, 5vw, 4rem);
   cursor: none;
@@ -850,7 +922,7 @@ h2 {
 
 .about-overlay__body p {
   max-width: 900px;
-  color: #0a223a;
+  color: var(--reference-light);
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(2rem, 3.2vw, 3.2rem);
   line-height: 1.08;
@@ -872,6 +944,25 @@ h2 {
   .home-view {
     width: min(calc(100% - 24px), var(--max-width));
     padding-top: 16px;
+  }
+
+  .skills-section .section-title {
+    width: calc(100% - 24px);
+  }
+
+  .skills-list {
+    padding: 14px 12px 20px;
+  }
+
+  .portfolio-footer {
+    margin-top: 16px;
+    padding: 18px 12px 14px;
+  }
+
+  .portfolio-footer__line {
+    gap: 8px 18px;
+    font-size: clamp(0.82rem, 4vw, 1.05rem);
+    letter-spacing: 0.06em;
   }
 
   .hero-board {
@@ -949,7 +1040,7 @@ h2 {
 
 @media (min-width: 981px) {
   .project-stream {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
     max-width: none;
     margin-left: 0;
