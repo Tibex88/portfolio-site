@@ -189,6 +189,7 @@ h2 {
   font-size: 44px;
   line-height: 1;
   transform: rotate(-7deg);
+  user-select: none;
 }
 
 .hero-board__subtitle {
@@ -282,6 +283,7 @@ h2 {
   font-family: "Brush Script MT", "Segoe Script", cursive;
   font-size: clamp(1.5rem, 3vw, 2.6rem);
   transform: rotate(-8deg);
+  user-select: none;
 }
 
 .decorative-title {
@@ -317,6 +319,7 @@ h2 {
   font-family: "Brush Script MT", "Segoe Script", cursive;
   font-size: 28px;
   transform: rotate(-9deg);
+  user-select: none;
 }
 
 .decorative-title__spark {
@@ -917,6 +920,7 @@ h2 {
   z-index: 200;
   background: transparent;
   pointer-events: auto;
+  user-select: none;
 }
 
 .about-overlay__panel {
