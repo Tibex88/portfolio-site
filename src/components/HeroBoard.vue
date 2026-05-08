@@ -26,13 +26,13 @@ const rightInfoItems = computed(() => {
     class="relative mb-[var(--section-gap)] rounded-[var(--card-radius)] border-[3px] border-[#0a0a0a] bg-[var(--reference-dark)] px-[18px] pt-12 pb-[18px] text-[var(--reference-light)] shadow-[inset_0_0_0_3px_rgba(0,0,0,0.08)] min-[810px]:px-6 min-[810px]:pt-14 min-[810px]:pb-5 min-[1310px]:px-7 min-[1310px]:pt-[62px] min-[1310px]:pb-[18px]"
   >
     <p
-      class="mb-[14px] max-w-full font-[var(--ui-font)] text-[calc(16px*var(--body-text-scale))] font-bold uppercase tracking-[0.08em] text-[var(--reference-light)] min-[810px]:text-[calc(18px*var(--body-text-scale))]"
+      class="mb-[14px] max-w-full text-center font-[var(--ui-font)] text-[calc(16px*var(--body-text-scale))] font-bold uppercase tracking-[0.08em] text-[var(--reference-light)] min-[810px]:text-[calc(18px*var(--body-text-scale))]"
     >
       {{ heroContent.eyebrow }}
     </p>
 
     <div class="border-b-[2px] border-b-[rgba(194,208,190,0.95)] pb-4 min-[810px]:border-b-0 min-[810px]:pb-0">
-      <div class="relative flex flex-wrap items-end gap-4 max-[809px]:gap-[6px]">
+      <div class="relative flex flex-wrap items-end justify-center gap-4 text-center max-[809px]:gap-[6px]">
         <span
           class="font-[var(--display-font)] text-[52px] leading-[0.88] tracking-[0.03em] uppercase "
         >
@@ -50,7 +50,7 @@ const rightInfoItems = computed(() => {
         </span>
       </div>
       <p
-        class="mt-2 font-['Brush_Script_MT','Segoe_Script',cursive] text-[calc(28px*var(--body-text-scale))] text-[var(--reference-light)] min-[810px]:text-[calc(32px*var(--body-text-scale))] min-[1310px]:text-[calc(38px*var(--body-text-scale))]"
+        class="mt-2 text-center font-['Brush_Script_MT','Segoe_Script',cursive] text-[calc(28px*var(--body-text-scale))] text-[var(--reference-light)] min-[810px]:text-[calc(32px*var(--body-text-scale))] min-[1310px]:text-[calc(38px*var(--body-text-scale))]"
       >
         {{ heroContent.subtitle }}
       </p>
