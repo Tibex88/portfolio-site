@@ -24,7 +24,7 @@ const { heroContent, infoCardItems } = storeToRefs(store)
           {{ heroContent.titleTop }}
         </span>
         <span
-          class="relative mt-[-8px] block w-full rotate-[-7deg] font-['Brush_Script_MT','Segoe_Script',cursive] text-[44px] leading-none text-[var(--accent)] min-[810px]:absolute min-[810px]:top-[38%] min-[810px]:left-[34%] min-[810px]:mt-0 min-[810px]:inline-block min-[810px]:w-auto min-[810px]:text-[58px] min-[1310px]:text-[74px]"
+          class="relative mt-[-8px] block w-full rotate-[-7deg] select-none font-['Brush_Script_MT','Segoe_Script',cursive] text-[44px] leading-none text-[var(--accent)] min-[810px]:absolute min-[810px]:top-[38%] min-[810px]:left-[34%] min-[810px]:mt-0 min-[810px]:inline-block min-[810px]:w-auto min-[810px]:text-[58px] min-[1310px]:text-[74px]"
         >
           {{ heroContent.overlayWord }}
         </span>
