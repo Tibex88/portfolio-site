@@ -31,33 +31,33 @@ const rightInfoItems = computed(() => {
       {{ heroContent.eyebrow }}
     </p>
 
-    <div class="border-b-[2px] border-b-[rgba(194,208,190,0.95)] pb-4 min-[810px]:border-b-0 min-[810px]:pb-0">
-      <div class="relative flex flex-wrap items-end justify-center gap-4 text-center max-[809px]:gap-[6px]">
-        <span
-          class="font-[var(--display-font)] text-[52px] leading-[0.88] tracking-[0.03em] uppercase "
+    <div class="hero-board__content">
+      <div class="hero-board__title-block border-b-[2px] border-b-[rgba(194,208,190,0.95)] pb-4 min-[810px]:border-b-0 min-[810px]:pb-0">
+        <div class="relative flex flex-wrap items-end justify-center gap-4 text-center max-[809px]:gap-[6px]">
+          <span
+            class="font-[var(--display-font)] text-[52px] leading-[0.88] tracking-[0.03em] uppercase "
+          >
+            {{ heroContent.titleTop }}
+          </span>
+          <span
+            class="relative mt-[-8px] block w-full rotate-[-7deg] select-none font-['Brush_Script_MT','Segoe_Script',cursive] text-[44px] leading-none text-[var(--accent)] min-[810px]:absolute min-[810px]:top-[38%] min-[810px]:left-[34%] min-[810px]:mt-0 min-[810px]:inline-block min-[810px]:w-auto min-[810px]:text-[58px] min-[1310px]:text-[74px]"
+          >
+            {{ heroContent.overlayWord }}
+          </span>
+          <span
+            class="font-[var(--display-font)] text-[52px] leading-[0.88] tracking-[0.03em] uppercase"
+          >
+            {{ heroContent.titleBottom }}
+          </span>
+        </div>
+        <p
+          class="mt-2 text-center font-['Brush_Script_MT','Segoe_Script',cursive] text-[calc(28px*var(--body-text-scale))] text-[var(--reference-light)] min-[810px]:text-[calc(32px*var(--body-text-scale))] min-[1310px]:text-[calc(38px*var(--body-text-scale))]"
         >
-          {{ heroContent.titleTop }}
-        </span>
-        <span
-          class="relative mt-[-8px] block w-full rotate-[-7deg] select-none font-['Brush_Script_MT','Segoe_Script',cursive] text-[44px] leading-none text-[var(--accent)] min-[810px]:absolute min-[810px]:top-[38%] min-[810px]:left-[34%] min-[810px]:mt-0 min-[810px]:inline-block min-[810px]:w-auto min-[810px]:text-[58px] min-[1310px]:text-[74px]"
-        >
-          {{ heroContent.overlayWord }}
-        </span>
-        <span
-          class="font-[var(--display-font)] text-[52px] leading-[0.88] tracking-[0.03em] uppercase"
-        >
-          {{ heroContent.titleBottom }}
-        </span>
+          {{ heroContent.subtitle }}
+        </p>
       </div>
-      <p
-        class="mt-2 text-center font-['Brush_Script_MT','Segoe_Script',cursive] text-[calc(28px*var(--body-text-scale))] text-[var(--reference-light)] min-[810px]:text-[calc(32px*var(--body-text-scale))] min-[1310px]:text-[calc(38px*var(--body-text-scale))]"
-      >
-        {{ heroContent.subtitle }}
-      </p>
-    </div>
 
-    <div class="hero-board__info-grid">
-      <div class="hero-board__info-panel">
+      <div class="hero-board__info-panel hero-board__info-panel--left">
         <component
           v-for="item in leftInfoItems"
           :key="item.id"
@@ -77,12 +77,7 @@ const rightInfoItems = computed(() => {
         </component>
       </div>
 
-      <div
-        class="hidden min-[810px]:block min-[810px]:self-stretch min-[810px]:w-px min-[810px]:justify-self-center min-[810px]:bg-[rgba(194,208,190,0.95)]"
-        aria-hidden="true"
-      />
-
-      <div class="hero-board__info-panel">
+      <div class="hero-board__info-panel hero-board__info-panel--right">
         <component
           v-for="item in rightInfoItems"
           :key="item.id"

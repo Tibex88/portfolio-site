@@ -199,6 +199,19 @@ h2 {
   font-size: 28px;
 }
 
+.hero-board__content {
+  display: block;
+}
+
+.hero-board__title-block {
+  margin-bottom: 20px;
+}
+
+.hero-board__info-panel--left,
+.hero-board__info-panel--right {
+  margin-top: 12px;
+}
+
 .hero-board__info-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1044,17 +1057,31 @@ h2 {
     font-size: 32px;
   }
 
-  .hero-board__info-grid {
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    align-items: stretch;
+  .hero-board__content {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(360px, auto) minmax(280px, 1fr);
+    align-items: center;
+    gap: 24px;
   }
 
-  .hero-board__info-grid > .hero-board__info-panel:first-child {
+  .hero-board__title-block {
+    grid-column: 2;
+    margin: 0;
+    width: 100%;
+  }
+
+  .hero-board__info-panel--left {
     grid-column: 1;
+    grid-row: 1;
+    margin-top: 0;
+    align-self: center;
   }
 
-  .hero-board__info-grid > .hero-board__info-panel:last-child {
+  .hero-board__info-panel--right {
     grid-column: 3;
+    grid-row: 1;
+    margin-top: 0;
+    align-self: center;
   }
 
   .hero-board__info-label {
