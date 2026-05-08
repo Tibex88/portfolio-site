@@ -322,6 +322,53 @@ h2 {
   user-select: none;
 }
 
+.decorative-title__scribble {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.decorative-title__scribble--slash {
+  left: 52%;
+  top: 56%;
+  width: 58%;
+  border-top: 4px solid var(--accent);
+  border-radius: 999px;
+  transform: translate(-50%, -50%) rotate(-6deg) scale(.96);
+}
+
+.decorative-title__scribble--loop {
+  left: 46%;
+  top: 56%;
+  width: 62%;
+  height: 56%;
+  border: 4px solid var(--accent);
+  border-radius: 999px;
+  transform: translate(-50%, -50%) rotate(7deg) scale(.96);
+}
+
+.decorative-title__scribble--pointer {
+  left: 78%;
+  top: 18%;
+  width: 18%;
+  height: 36%;
+  transform: translate(-50%, -50%) rotate(12deg) scale(.96);
+}
+
+.decorative-title__scribble--pointer::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  border-left: 4px solid var(--accent);
+  border-bottom: 4px solid var(--accent);
+  border-bottom-left-radius: 24px;
+  transform: translate(-35%, -55%);
+}
+
 .decorative-title__spark {
   position: absolute;
   color: var(--accent);
@@ -341,7 +388,9 @@ h2 {
 }
 
 .interactive-target:hover .decorative-title__spark,
-.project-card.is-selected .decorative-title__spark {
+.project-card.is-selected .decorative-title__spark,
+.interactive-target:hover .decorative-title__scribble,
+.project-card.is-selected .decorative-title__scribble {
   opacity: 1;
 }
 
@@ -506,73 +555,6 @@ h2 {
   text-transform: uppercase;
 }
 
-.project-scribble {
-  position: absolute;
-  z-index: 2;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 180ms ease, transform 180ms ease;
-}
-
-.project-card:hover .project-scribble,
-.project-card.is-selected .project-scribble {
-  opacity: 1;
-}
-
-.project-scribble--stroke {
-  color: var(--accent);
-}
-
-.project-scribble--slash {
-  height: 0;
-  border-top: 4px solid var(--accent);
-  border-radius: 999px;
-}
-
-.project-scribble--loop {
-  border: 4px solid var(--accent);
-  border-radius: 999px;
-}
-
-.project-scribble--pointer {
-  width: 0;
-  height: 0;
-}
-
-.project-scribble--pointer::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 100%;
-  height: 100%;
-  border-left: 4px solid var(--accent);
-  border-bottom: 4px solid var(--accent);
-  border-bottom-left-radius: 24px;
-  transform: translate(-35%, -55%);
-}
-
-.project-scribble--callout {
-  color: var(--accent);
-  font-family: "Brush Script MT", "Segoe Script", "Marker Felt", cursive;
-  font-weight: 700;
-  line-height: .95;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.project-scribble--sm {
-  font-size: 1.35rem;
-}
-
-.project-scribble--md {
-  font-size: 1.7rem;
-}
-
-.project-scribble--lg {
-  font-size: 2rem;
-}
-
 .annotation-tag {
   position: absolute;
   padding: 6px 12px;
@@ -592,34 +574,6 @@ h2 {
 
 .annotation-tag.is-active {
   opacity: 1;
-}
-
-@media (max-width: 809px) {
-  .project-scribble--slash,
-  .project-scribble--loop {
-    border-width: 3px;
-  }
-
-  .project-scribble--slash {
-    border-top-width: 3px;
-  }
-
-  .project-scribble--pointer::before {
-    border-left-width: 3px;
-    border-bottom-width: 3px;
-  }
-
-  .project-scribble--sm {
-    font-size: 1.1rem;
-  }
-
-  .project-scribble--md {
-    font-size: 1.35rem;
-  }
-
-  .project-scribble--lg {
-    font-size: 1.6rem;
-  }
 }
 
 .custom-cursor {

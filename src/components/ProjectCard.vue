@@ -2,8 +2,6 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import DecorativeTitle from './DecorativeTitle.vue'
-import ScribbleCallout from './ScribbleCallout.vue'
-import ScribbleStroke from './ScribbleStroke.vue'
 import { type ProjectItem } from '@/data/siteContent'
 import { usePortfolioStore } from '@/stores/portfolio'
 
@@ -17,7 +15,10 @@ const store = usePortfolioStore()
 const { selectedProjectId } = storeToRefs(store)
 
 const isSelected = computed(() => selectedProjectId.value === props.project.id)
-const hoverOverlays = computed(() => props.project.hoverOverlays ?? [])
+const titleScribble = computed(() => {
+  const variants = ['slash', 'loop', 'pointer'] as const
+  return variants[props.index % variants.length]
+})
 
 function activateCard() {
   store.setSelectedProject(props.project.id)
@@ -43,7 +44,7 @@ function resetCard() {
       <div class="project-card__count">0{{ index + 1 }}</div>
       <div class="project-card__header">
         <p class="eyebrow">{{ project.timeline }}</p>
-        <DecorativeTitle :main="project.title" overlay="project" dark />
+        <DecorativeTitle :main="project.title" overlay="project" :scribble="titleScribble" dark />
         <!-- <span
           v-if="project.confidential"
           class="project-card__lock"
@@ -85,25 +86,6 @@ function resetCard() {
           {{ item }}
         </span>
       </div>
-      <template v-for="overlay in hoverOverlays" :key="overlay.id">
-        <ScribbleStroke
-          v-if="overlay.type === 'stroke'"
-          :variant="overlay.variant"
-          :x="overlay.x"
-          :y="overlay.y"
-          :width="overlay.width"
-          :height="overlay.height"
-          :rotation="overlay.rotation"
-        />
-        <ScribbleCallout
-          v-else
-          :text="overlay.text"
-          :x="overlay.x"
-          :y="overlay.y"
-          :rotation="overlay.rotation"
-          :size="overlay.size"
-        />
-      </template>
     </div>
   </article>
 </template>
