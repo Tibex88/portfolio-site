@@ -79,7 +79,7 @@ export const projects: ProjectItem[] = [
     stack: ['NestJS', 'TypeScript', 'MySQL', 'TypeORM', 'Docker', 'Firebase'],
     confidential: true,
     cursorMode: 'inspect',
-    assetIds: ['asset-project-et-delivery', 'asset-note-dispatch'],
+    assetIds: ['asset-project-et-delivery'],
   },
   {
     id: 'Navi-Thera',
@@ -92,7 +92,7 @@ export const projects: ProjectItem[] = [
     stack: ['NestJS', 'MySQL', 'WebSockets', 'LiveKit', 'Firebase', 'Docker'],
     confidential: true,
     cursorMode: 'open',
-    assetIds: ['asset-project-therapy', 'asset-note-session'],
+    assetIds: ['asset-project-therapy'],
   },
   {
     id: 'ebp',
@@ -104,7 +104,7 @@ export const projects: ProjectItem[] = [
     impact: 'Transactional commerce plus graph-based recommendation signals.',
     stack: ['NestJS', 'MySQL', 'Neo4j', 'Cypher', 'Docker'],
     cursorMode: 'drag',
-    assetIds: ['asset-project-ebp', 'asset-note-recommend'],
+    assetIds: ['asset-project-ebp'],
   },
 ]
 
@@ -298,59 +298,5 @@ export const assets: AssetItem[] = [
     source: 'tbd',
     file: '/src/assets/local/ebp-hero-placeholder.png',
     notes: 'Large project anchor image for e-commerce / recommendation section.',
-  },
-  {
-    id: 'asset-note-dispatch',
-    name: 'Dispatch Scribble',
-    kind: 'scribble',
-    source: 'licensed-reference',
-    file: '/src/assets/reference/dispatch-scribble-placeholder.svg',
-    notes: 'Hover/click annotation asset for dispatch and routing language.',
-    annotations: [
-      {
-        id: 'annotation-dispatch',
-        label: 'dispatch logic',
-        trigger: 'hover',
-        x: '68%',
-        y: '16%',
-        rotation: -6,
-      },
-    ],
-  },
-  {
-    id: 'asset-note-session',
-    name: 'Session Scribble',
-    kind: 'scribble',
-    source: 'licensed-reference',
-    file: '/src/assets/reference/session-scribble-placeholder.svg',
-    notes: 'Hover/click annotation asset for sessions, calls, and coordination.',
-    annotations: [
-      {
-        id: 'annotation-session',
-        label: 'group sessions',
-        trigger: 'click',
-        x: '12%',
-        y: '72%',
-        rotation: 4,
-      },
-    ],
-  },
-  {
-    id: 'asset-note-recommend',
-    name: 'Recommendation Scribble',
-    kind: 'scribble',
-    source: 'licensed-reference',
-    file: '/src/assets/reference/recommend-scribble-placeholder.svg',
-    notes: 'Overlay asset for graph/recommendation interactions.',
-    annotations: [
-      {
-        id: 'annotation-recommend',
-        label: 'neo4j signals',
-        trigger: 'hover',
-        x: '58%',
-        y: '82%',
-        rotation: 8,
-      },
-    ],
   },
 ]
