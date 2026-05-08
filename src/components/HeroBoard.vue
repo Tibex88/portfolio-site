@@ -31,7 +31,7 @@ const rightInfoItems = computed(() => {
       {{ heroContent.eyebrow }}
     </p>
 
-    <div class="border-b-[2px] border-b-[rgba(194,208,190,0.95)] pb-4">
+    <div class="border-b-[2px] border-b-[rgba(194,208,190,0.95)] pb-4 min-[810px]:border-b-0 min-[810px]:pb-0">
       <div class="relative flex flex-wrap items-end gap-4 max-[809px]:gap-[6px]">
         <span
           class="font-[var(--display-font)] text-[52px] leading-[0.88] tracking-[0.03em] uppercase "
@@ -76,6 +76,11 @@ const rightInfoItems = computed(() => {
           <span class="hero-board__info-value">{{ item.value }}</span>
         </component>
       </div>
+
+      <div
+        class="hidden min-[810px]:block min-[810px]:self-stretch min-[810px]:w-px min-[810px]:justify-self-center min-[810px]:bg-[rgba(194,208,190,0.95)]"
+        aria-hidden="true"
+      />
 
       <div class="hero-board__info-panel">
         <component
