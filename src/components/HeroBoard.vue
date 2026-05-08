@@ -1,9 +1,24 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { usePortfolioStore } from '@/stores/portfolio'
 
 const store = usePortfolioStore()
 const { heroContent, infoCardItems } = storeToRefs(store)
+
+const leftInfoItems = computed(() => {
+  const order = ['about', 'contact', 'phone']
+  return order
+    .map((id) => infoCardItems.value.find((item) => item.id === id))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item))
+})
+
+const rightInfoItems = computed(() => {
+  const order = ['social', 'work', 'CV']
+  return order
+    .map((id) => infoCardItems.value.find((item) => item.id === id))
+    .filter((item): item is NonNullable<typeof item> => Boolean(item))
+})
 </script>
 
 <template>
@@ -42,23 +57,44 @@ const { heroContent, infoCardItems } = storeToRefs(store)
     </div>
 
     <div class="hero-board__info-grid">
-      <component
-        v-for="item in infoCardItems"
-        :key="item.id"
-        class="hero-board__info-card interactive-target"
-        :class="{ 'is-static': !item.href }"
-        :is="item.id === 'about' ? 'button' : 'a'"
-        :href="item.id === 'about' ? undefined : item.href || undefined"
-        :target="item.id === 'about' ? undefined : item.href?.startsWith('http') ? '_blank' : undefined"
-        :rel="item.id === 'about' ? undefined : 'noreferrer'"
-        :data-cursor-mode="item.cursorMode || 'inspect'"
-        @mouseenter="store.setCursorMode(item.cursorMode || 'inspect')"
-        @mouseleave="store.setCursorMode('default')"
-        @click="item.id === 'about' ? store.openOverlay('about') : undefined"
-      >
-        <span class="hero-board__info-label">{{ item.label }}</span>
-        <span class="hero-board__info-value">{{ item.value }}</span>
-      </component>
+      <div class="hero-board__info-panel">
+        <component
+          v-for="item in leftInfoItems"
+          :key="item.id"
+          class="hero-board__info-row interactive-target"
+          :class="{ 'is-static': !item.href }"
+          :is="item.id === 'about' ? 'button' : 'a'"
+          :href="item.id === 'about' ? undefined : item.href || undefined"
+          :target="item.id === 'about' ? undefined : item.href?.startsWith('http') ? '_blank' : undefined"
+          :rel="item.id === 'about' ? undefined : 'noreferrer'"
+          :data-cursor-mode="item.cursorMode || 'inspect'"
+          @mouseenter="store.setCursorMode(item.cursorMode || 'inspect')"
+          @mouseleave="store.setCursorMode('default')"
+          @click="item.id === 'about' ? store.openOverlay('about') : undefined"
+        >
+          <span class="hero-board__info-label">{{ item.label }}</span>
+          <span class="hero-board__info-value">{{ item.value }}</span>
+        </component>
+      </div>
+
+      <div class="hero-board__info-panel">
+        <component
+          v-for="item in rightInfoItems"
+          :key="item.id"
+          class="hero-board__info-row interactive-target"
+          :class="{ 'is-static': !item.href }"
+          :is="'a'"
+          :href="item.href || undefined"
+          :target="item.href?.startsWith('http') ? '_blank' : undefined"
+          rel="noreferrer"
+          :data-cursor-mode="item.cursorMode || 'inspect'"
+          @mouseenter="store.setCursorMode(item.cursorMode || 'inspect')"
+          @mouseleave="store.setCursorMode('default')"
+        >
+          <span class="hero-board__info-label">{{ item.label }}</span>
+          <span class="hero-board__info-value">{{ item.value }}</span>
+        </component>
+      </div>
     </div>
 
     <!-- <img
