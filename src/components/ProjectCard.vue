@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import AnnotationTag from './AnnotationTag.vue'
 import DecorativeTitle from './DecorativeTitle.vue'
+import ScribbleCallout from './ScribbleCallout.vue'
+import ScribbleStroke from './ScribbleStroke.vue'
 import { type ProjectItem } from '@/data/siteContent'
 import { usePortfolioStore } from '@/stores/portfolio'
 
@@ -13,17 +14,10 @@ const props = defineProps<{
 }>()
 
 const store = usePortfolioStore()
-const { assetItems, activeAnnotationId, selectedProjectId } = storeToRefs(store)
-
-const projectAssets = computed(() =>
-  assetItems.value.filter((asset) => props.project.assetIds.includes(asset.id)),
-)
-
-const annotations = computed(() =>
-  projectAssets.value.flatMap((asset) => asset.annotations ?? []),
-)
+const { selectedProjectId } = storeToRefs(store)
 
 const isSelected = computed(() => selectedProjectId.value === props.project.id)
+const hoverOverlays = computed(() => props.project.hoverOverlays ?? [])
 
 function activateCard() {
   store.setSelectedProject(props.project.id)
@@ -32,10 +26,6 @@ function activateCard() {
 
 function resetCard() {
   store.setCursorMode('default')
-}
-
-function toggleAnnotation(annotationId: string) {
-  store.setActiveAnnotation(activeAnnotationId.value === annotationId ? null : annotationId)
 }
 </script>
 
@@ -95,26 +85,25 @@ function toggleAnnotation(annotationId: string) {
           {{ item }}
         </span>
       </div>
-      <div class="project-card__scribble project-card__scribble--one" />
-      <div class="project-card__scribble project-card__scribble--two" />
-      <div
-        v-for="annotation in annotations"
-        :key="annotation.id"
-        class="annotation-hit interactive-target"
-        type="button"
-        :data-cursor-mode="project.cursorMode"
-        @mouseenter="store.setActiveAnnotation(annotation.id)"
-        @mouseleave="store.setActiveAnnotation(null)"
-        @click.stop="toggleAnnotation(annotation.id)"
-      >
-        <AnnotationTag
-          :label="annotation.label"
-          :x="annotation.x"
-          :y="annotation.y"
-          :rotation="annotation.rotation"
-          :active="activeAnnotationId === annotation.id"
+      <template v-for="overlay in hoverOverlays" :key="overlay.id">
+        <ScribbleStroke
+          v-if="overlay.type === 'stroke'"
+          :variant="overlay.variant"
+          :x="overlay.x"
+          :y="overlay.y"
+          :width="overlay.width"
+          :height="overlay.height"
+          :rotation="overlay.rotation"
         />
-    </div>
+        <ScribbleCallout
+          v-else
+          :text="overlay.text"
+          :x="overlay.x"
+          :y="overlay.y"
+          :rotation="overlay.rotation"
+          :size="overlay.size"
+        />
+      </template>
     </div>
   </article>
 </template>

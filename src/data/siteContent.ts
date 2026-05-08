@@ -20,6 +20,29 @@ export interface AssetItem {
   annotations?: AssetAnnotation[]
 }
 
+export interface ScribbleStrokeOverlay {
+  id: string
+  type: 'stroke'
+  variant: 'slash' | 'loop' | 'pointer'
+  x: string
+  y: string
+  width: string
+  height?: string
+  rotation?: number
+}
+
+export interface ScribbleCalloutOverlay {
+  id: string
+  type: 'callout'
+  text: string
+  x: string
+  y: string
+  rotation?: number
+  size?: 'sm' | 'md' | 'lg'
+}
+
+export type ProjectHoverOverlay = ScribbleStrokeOverlay | ScribbleCalloutOverlay
+
 export interface ProjectItem {
   id: string
   title: string
@@ -31,6 +54,7 @@ export interface ProjectItem {
   confidential?: boolean
   cursorMode: CursorMode
   assetIds: string[]
+  hoverOverlays?: ProjectHoverOverlay[]
 }
 
 export interface SocialItem {
@@ -80,6 +104,26 @@ export const projects: ProjectItem[] = [
     confidential: true,
     cursorMode: 'inspect',
     assetIds: ['asset-project-et-delivery'],
+    hoverOverlays: [
+      {
+        id: 'et-delivery-slash',
+        type: 'stroke',
+        variant: 'slash',
+        x: '74%',
+        y: '20%',
+        width: '42%',
+        rotation: -6,
+      },
+      {
+        id: 'et-delivery-callout',
+        type: 'callout',
+        text: 'dispatch ready',
+        x: '66%',
+        y: '30%',
+        rotation: -4,
+        size: 'md',
+      },
+    ],
   },
   {
     id: 'Navi-Thera',
@@ -93,6 +137,27 @@ export const projects: ProjectItem[] = [
     confidential: true,
     cursorMode: 'open',
     assetIds: ['asset-project-therapy'],
+    hoverOverlays: [
+      {
+        id: 'navi-loop',
+        type: 'stroke',
+        variant: 'loop',
+        x: '38%',
+        y: '70%',
+        width: '52%',
+        height: '22%',
+        rotation: 7,
+      },
+      {
+        id: 'navi-callout',
+        type: 'callout',
+        text: 'care flow',
+        x: '22%',
+        y: '78%',
+        rotation: -7,
+        size: 'lg',
+      },
+    ],
   },
   {
     id: 'ebp',
@@ -105,6 +170,27 @@ export const projects: ProjectItem[] = [
     stack: ['NestJS', 'MySQL', 'Neo4j', 'Cypher', 'Docker'],
     cursorMode: 'drag',
     assetIds: ['asset-project-ebp'],
+    hoverOverlays: [
+      {
+        id: 'ebp-pointer',
+        type: 'stroke',
+        variant: 'pointer',
+        x: '78%',
+        y: '58%',
+        width: '18%',
+        height: '20%',
+        rotation: 14,
+      },
+      {
+        id: 'ebp-callout',
+        type: 'callout',
+        text: 'graph signals',
+        x: '70%',
+        y: '42%',
+        rotation: -10,
+        size: 'md',
+      },
+    ],
   },
 ]
 

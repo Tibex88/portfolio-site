@@ -506,49 +506,71 @@ h2 {
   text-transform: uppercase;
 }
 
-.project-card__scribble {
+.project-scribble {
   position: absolute;
+  z-index: 2;
   opacity: 0;
   pointer-events: none;
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.project-card__scribble--one {
-  inset: auto 18px 70px auto;
-  width: 120px;
-  height: 60px;
-  border: 4px solid var(--accent);
-  border-color: var(--accent) transparent transparent transparent;
-  border-radius: 50%;
-  transform: rotate(10deg) scale(.94);
-}
-
-.project-card__scribble--two {
-  left: 22px;
-  top: 26px;
-  width: 42px;
-  height: 42px;
-  color: var(--accent);
-  font-size: 38px;
-  transform: rotate(-8deg) scale(.94);
-}
-
-.project-card__scribble--two::before {
-  content: "✦";
-}
-
-.project-card:hover .project-card__scribble,
-.project-card.is-selected .project-card__scribble {
+.project-card:hover .project-scribble,
+.project-card.is-selected .project-scribble {
   opacity: 1;
-  transform: rotate(0deg) scale(1);
 }
 
-.annotation-hit {
+.project-scribble--stroke {
+  color: var(--accent);
+}
+
+.project-scribble--slash {
+  height: 0;
+  border-top: 4px solid var(--accent);
+  border-radius: 999px;
+}
+
+.project-scribble--loop {
+  border: 4px solid var(--accent);
+  border-radius: 999px;
+}
+
+.project-scribble--pointer {
+  width: 0;
+  height: 0;
+}
+
+.project-scribble--pointer::before {
+  content: "";
   position: absolute;
-  inset: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  border-left: 4px solid var(--accent);
+  border-bottom: 4px solid var(--accent);
+  border-bottom-left-radius: 24px;
+  transform: translate(-35%, -55%);
+}
+
+.project-scribble--callout {
+  color: var(--accent);
+  font-family: "Brush Script MT", "Segoe Script", "Marker Felt", cursive;
+  font-weight: 700;
+  line-height: .95;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.project-scribble--sm {
+  font-size: 1.35rem;
+}
+
+.project-scribble--md {
+  font-size: 1.7rem;
+}
+
+.project-scribble--lg {
+  font-size: 2rem;
 }
 
 .annotation-tag {
@@ -570,6 +592,34 @@ h2 {
 
 .annotation-tag.is-active {
   opacity: 1;
+}
+
+@media (max-width: 809px) {
+  .project-scribble--slash,
+  .project-scribble--loop {
+    border-width: 3px;
+  }
+
+  .project-scribble--slash {
+    border-top-width: 3px;
+  }
+
+  .project-scribble--pointer::before {
+    border-left-width: 3px;
+    border-bottom-width: 3px;
+  }
+
+  .project-scribble--sm {
+    font-size: 1.1rem;
+  }
+
+  .project-scribble--md {
+    font-size: 1.35rem;
+  }
+
+  .project-scribble--lg {
+    font-size: 1.6rem;
+  }
 }
 
 .custom-cursor {
