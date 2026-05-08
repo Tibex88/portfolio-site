@@ -920,7 +920,6 @@ h2 {
   z-index: 200;
   background: transparent;
   pointer-events: auto;
-  user-select: none;
 }
 
 .about-overlay__panel {
@@ -941,6 +940,7 @@ h2 {
   color: var(--reference-light);
   border-radius: 16px;
   pointer-events: auto;
+  user-select: text;
 }
 
 .about-overlay__close {
