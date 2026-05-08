@@ -11,7 +11,7 @@ const { heroContent, infoCardItems } = storeToRefs(store)
     class="relative mb-[var(--section-gap)] rounded-[var(--card-radius)] border-[3px] border-[#0a0a0a] bg-[var(--reference-dark)] px-[18px] pt-12 pb-[18px] text-[var(--reference-light)] shadow-[inset_0_0_0_3px_rgba(0,0,0,0.08)] min-[810px]:px-6 min-[810px]:pt-14 min-[810px]:pb-5 min-[1310px]:px-7 min-[1310px]:pt-[62px] min-[1310px]:pb-[18px]"
   >
     <p
-      class="mb-[14px] max-w-full font-[var(--ui-font)] text-[16px] font-bold uppercase tracking-[0.08em] text-[var(--reference-light)] min-[810px]:text-[18px]"
+      class="mb-[14px] max-w-full font-[var(--ui-font)] text-[calc(16px*var(--body-text-scale))] font-bold uppercase tracking-[0.08em] text-[var(--reference-light)] min-[810px]:text-[calc(18px*var(--body-text-scale))]"
     >
       {{ heroContent.eyebrow }}
     </p>
@@ -19,7 +19,7 @@ const { heroContent, infoCardItems } = storeToRefs(store)
     <div class="border-b-[2px] border-b-[rgba(194,208,190,0.95)] pb-4">
       <div class="relative flex flex-wrap items-end gap-4 max-[809px]:gap-[6px]">
         <span
-          class="font-[var(--display-font)] text-[72px] leading-[0.88] tracking-[0.03em] uppercase min-[810px]:text-[96px] min-[1310px]:text-[138px]"
+          class="font-[var(--display-font)] text-[52px] leading-[0.88] tracking-[0.03em] uppercase "
         >
           {{ heroContent.titleTop }}
         </span>
@@ -29,24 +29,24 @@ const { heroContent, infoCardItems } = storeToRefs(store)
           {{ heroContent.overlayWord }}
         </span>
         <span
-          class="font-[var(--display-font)] text-[72px] leading-[0.88] tracking-[0.03em] uppercase min-[810px]:text-[96px] min-[1310px]:text-[138px]"
+          class="font-[var(--display-font)] text-[52px] leading-[0.88] tracking-[0.03em] uppercase"
         >
           {{ heroContent.titleBottom }}
         </span>
       </div>
       <p
-        class="mt-2 font-['Brush_Script_MT','Segoe_Script',cursive] text-[28px] text-[var(--reference-light)] min-[810px]:text-[32px] min-[1310px]:text-[38px]"
+        class="mt-2 font-['Brush_Script_MT','Segoe_Script',cursive] text-[calc(28px*var(--body-text-scale))] text-[var(--reference-light)] min-[810px]:text-[calc(32px*var(--body-text-scale))] min-[1310px]:text-[calc(38px*var(--body-text-scale))]"
       >
         {{ heroContent.subtitle }}
       </p>
     </div>
 
-    <div class="mt-5 grid grid-cols-1 gap-3 min-[810px]:grid-cols-2">
+    <div class="hero-board__info-grid">
       <component
         v-for="item in infoCardItems"
         :key="item.id"
-        class="interactive-target flex min-h-[74px] items-center justify-between gap-[14px] rounded-[10px] border-[2px] border-transparent bg-[#afc6b3] px-4 py-[14px] text-[#0a223a] no-underline transition duration-180 ease-[ease] hover:translate-y-[-2px] hover:border-[#0a223a]"
-        :class="{ 'cursor-none': item.href, 'cursor-default': !item.href }"
+        class="hero-board__info-card interactive-target"
+        :class="{ 'is-static': !item.href }"
         :is="item.id === 'about' ? 'button' : 'a'"
         :href="item.id === 'about' ? undefined : item.href || undefined"
         :target="item.id === 'about' ? undefined : item.href?.startsWith('http') ? '_blank' : undefined"
@@ -56,16 +56,8 @@ const { heroContent, infoCardItems } = storeToRefs(store)
         @mouseleave="store.setCursorMode('default')"
         @click="item.id === 'about' ? store.openOverlay('about') : undefined"
       >
-        <span
-          class="font-[var(--ui-font)] text-[14px] font-bold uppercase min-[810px]:text-[16px]"
-        >
-          {{ item.label }}
-        </span>
-        <span
-          class="font-['Brush_Script_MT','Segoe_Script',cursive] text-[26px] min-[810px]:text-[34px]"
-        >
-          {{ item.value }}
-        </span>
+        <span class="hero-board__info-label">{{ item.label }}</span>
+        <span class="hero-board__info-value">{{ item.value }}</span>
       </component>
     </div>
 

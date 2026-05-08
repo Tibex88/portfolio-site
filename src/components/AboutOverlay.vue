@@ -12,7 +12,7 @@ const { aboutContent, activeOverlay } = storeToRefs(store)
     class="about-overlay"
     @click.self="store.closeOverlay()"
   >
-    <div class="about-overlay__panel reference-card">
+    <div class="about-overlay__panel">
       <button class="about-overlay__close interactive-target" type="button" @click="store.closeOverlay()">
         {{ aboutContent.title }}
       </button>

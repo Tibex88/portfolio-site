@@ -82,8 +82,8 @@ export const projects: ProjectItem[] = [
     assetIds: ['asset-project-et-delivery', 'asset-note-dispatch'],
   },
   {
-    id: 'Navi Thera',
-    title: 'Mental Health / Therapy Platform ',
+    id: 'Navi-Thera',
+    title: 'Navi Thera ',
     timeline: 'Apr 2025 - Apr 2026',
     summary:
       'Sessions, subscriptions, chat/call infrastructure, therapist operations, and healthcare integration planning.',
@@ -117,7 +117,7 @@ export const socials: SocialItem[] = [
     cursorMode: 'open',
   },
   {
-    id: 'website',
+    id: 'reusme',
     label: 'Website',
     href: 'https://tibebesolomon.vercel.app',
     note: 'current public presence',
@@ -168,8 +168,8 @@ export const infoCards: InfoCardItem[] = [
   {
     id: 'social',
     label: 'Social:',
-    value: 'GitHub',
-    href: 'https://github.com/Tibex88',
+    value: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/tibebe-solomon-278294234/',
     cursorMode: 'open',
   },
   {
@@ -182,8 +182,8 @@ export const infoCards: InfoCardItem[] = [
   {
     id: 'work',
     label: 'Work:',
-    value: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/tibebe-solomon-278294234/',
+    value: 'Github',
+    href: 'https://github.com/Tibex88',
     cursorMode: 'open',
   },
   {
@@ -194,9 +194,9 @@ export const infoCards: InfoCardItem[] = [
     cursorMode: 'drag',
   },
   {
-    id: 'website',
-    label: 'Website:',
-    value: 'Portfolio',
+    id: 'CV',
+    label: 'History:',
+    value: 'CV ',
     href: 'https://tibebesolomon.vercel.app/',
     cursorMode: 'inspect',
   },

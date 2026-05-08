@@ -16,6 +16,8 @@
   --frame-gutter: 24px;
   --content-width: calc((var(--frame-width) - (var(--frame-gutter) * 2)) * 0.9602);
   --content-max: max(var(--content-width), 1px);
+  --main-column-width: min(var(--content-max), 1000px);
+  --body-text-scale: 0.8;
   --section-gap: 28px;
   --card-radius: 18px;
   --display-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -39,6 +41,16 @@ body {
   color: var(--text);
   cursor: none;
   font-family: var(--ui-font);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 82%, white 18%);
+  color: #fff7f8;
+}
+
+::-moz-selection {
+  background: color-mix(in srgb, var(--accent) 82%, white 18%);
+  color: #fff7f8;
 }
 
 body::before {
@@ -94,7 +106,7 @@ body::before {
   margin: 0 0 8px;
   color: var(--text);
   font-family: var(--ui-font);
-  font-size: 14px;
+  font-size: calc(14px * var(--body-text-scale));
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -365,6 +377,7 @@ h2 {
   background: var(--paper);
   box-shadow: 0 8px 0 rgba(0, 0, 0, 0.14);
   transition: transform 220ms ease, box-shadow 220ms ease;
+  max-width: 490px;
 }
 
 .project-card.card-1 {
@@ -384,12 +397,12 @@ h2 {
 .project-card__count {
   margin-bottom: 14px;
   color: rgba(0, 0, 0, 0.6);
-  font-size: 14px;
+  font-size: calc(14px * var(--body-text-scale));
 }
 
 .project-card__surface {
   position: relative;
-  min-height: 460px;
+  /* min-height: 460px; */
   padding: 24px 22px 20px;
   display: flex;
   flex-direction: column;
@@ -407,7 +420,6 @@ h2 {
 
 .project-card::after {
   position: absolute;
-  inset: 16px;
   border: 2px solid rgba(0, 0, 0, 0.18);
   border-radius: 24px;
   content: "";
@@ -456,19 +468,20 @@ h2 {
   margin-bottom: 14px;
   color: rgba(0, 0, 0, 0.7);
   font-family: var(--ui-font);
-  font-size: 14px;
+  font-size: calc(14px * var(--body-text-scale));
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .project-card__summary {
   max-width: 17rem;
-  font-size: 14px;
+  font-size: calc(14px * var(--body-text-scale));
   margin-bottom: 10px;
 }
 
 .project-card__impact {
   max-width: 16rem;
+  font-size: calc(14px * var(--body-text-scale));
   margin-bottom: 18px;
 }
 
@@ -476,7 +489,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: auto;
+  /* margin-top: auto; */
 }
 
 .project-chip {
@@ -485,7 +498,7 @@ h2 {
   border: 1px solid rgba(0, 0, 0, 0.18);
   background: rgba(255, 255, 255, 0.4);
   font-family: "Arial Narrow", Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: calc(12px * var(--body-text-scale));
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -619,7 +632,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 28px;
-  justify-content: center;
+  justify-content: space-between;
   color: #afc6b3;
   font-size: 14px;
   font-weight: 700;
@@ -902,43 +915,56 @@ h2 {
   position: fixed;
   inset: 0;
   z-index: 200;
-  padding: 20px;
-  background: rgba(125, 140, 127, 0.28);
-  backdrop-filter: blur(2px);
+  background: transparent;
+  pointer-events: auto;
 }
 
 .about-overlay__panel {
-  width: min(var(--content-max), 100%);
-  max-height: calc(100vh - 40px);
-  margin: 0 auto;
-  padding: 48px 28px 28px;
-  overflow: auto;
-  background: var(--reference-dark);
+  position: fixed;
+  top: 16px;
+  left: 20px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 702px;
+  max-width: calc(100vw - 40px);
+  height: min-content;
+  padding: 22px 32px 32px;
+  overflow: hidden;
+  background: #000;
   color: var(--reference-light);
+  border-radius: 16px;
+  pointer-events: auto;
 }
 
 .about-overlay__close {
-  margin: 0 0 18px;
+  width: 70px;
+  margin: 0;
   padding: 0;
   border: 0;
   background: transparent;
   color: var(--reference-light);
   font-family: "Brush Script MT", "Segoe Script", cursive;
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-size: 1.6rem;
+  line-height: 1;
+  text-align: left;
+  text-transform: uppercase;
   cursor: none;
 }
 
 .about-overlay__body {
   display: grid;
-  gap: 26px;
+  width: 100%;
+  gap: 24px;
 }
 
 .about-overlay__body p {
-  max-width: 900px;
   color: var(--reference-light);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 28px;
-  line-height: 1.08;
+  font-size: 0.95rem;
+  line-height: 1.3;
 }
 
 @media (min-width: 810px) {
@@ -1023,11 +1049,11 @@ h2 {
 
   .project-card,
   .project-card__surface {
-    min-height: 540px;
+    /* min-height: 540px; */
   }
 
   .project-card__surface {
-    padding: 28px 26px 24px;
+    /* padding: 28px 26px 24px; */
   }
 
   .project-card__summary {
@@ -1056,13 +1082,13 @@ h2 {
   }
 
   .about-overlay__body p {
-    font-size: 34px;
+    font-size: 20px;
   }
 }
 
 @media (min-width: 1310px) {
   :root {
-    --section-gap: 34px;
+    --section-gap: 20px;
   }
 
   h1,
@@ -1102,7 +1128,7 @@ h2 {
 
   .project-card,
   .project-card__surface {
-    min-height: 620px;
+    /* min-height: 620px; */
   }
 
   .project-card__summary {
@@ -1127,7 +1153,7 @@ h2 {
   }
 
   .about-overlay__body p {
-    font-size: 44px;
+    font-size: 20px;
   }
 }
 
@@ -1196,21 +1222,46 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .about-overlay {
-    padding: 10px;
-  }
-
   .about-overlay__panel {
-    max-height: calc(100vh - 20px);
-    padding: 40px 18px 20px;
+    top: 16px;
+    left: 20px;
+    width: 74%;
+    height: 95%;
+    max-width: none;
+    padding: 32px 48px;
   }
 
   .about-overlay__body p {
-    font-size: clamp(1.4rem, 6vw, 2rem);
+    font-size: 0.95rem;
   }
 
   .timeline-item {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+}
+
+@media (max-width: 809px) {
+  .about-overlay__panel {
+    top: 10px;
+    left: 10px;
+    width: 95%;
+    max-width: none;
+    height: 97%;
+    padding: 22px 20px 32px 16px;
+    overflow: auto;
+  }
+
+  .about-overlay__body {
+    gap: 14px;
+  }
+
+  .about-overlay__close {
+    font-size: 1.35rem;
+  }
+
+  .about-overlay__body p {
+    font-size: 0.88rem;
+    line-height: 1.28;
   }
 }

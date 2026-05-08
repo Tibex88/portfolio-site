@@ -14,12 +14,14 @@ const { projectItems } = storeToRefs(store)
         Selected Projects
       </p>
     </div>
-    <ProjectCard
-      v-for="(project, index) in projectItems"
-      :key="project.id"
-      :project="project"
-      :index="index"
-      :show-ampersand="index < projectItems.length - 1"
-    />
+    <div class="grid grid-cols-1 gap-[18px] min-[735px]:grid-cols-2 grid-cols-1">
+      <ProjectCard
+        v-for="(project, index) in projectItems"
+        :key="project.id"
+        :project="project"
+        :index="index"
+        :show-ampersand="index < projectItems.length - 1"
+      />
+    </div>
   </section>
 </template>
