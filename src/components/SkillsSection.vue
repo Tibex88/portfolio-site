@@ -93,16 +93,18 @@ const skillCards = computed(() =>
 </script>
 
 <template>
-  <section class="relative left-1/2 mr-[-50vw] ml-[-50vw] w-screen">
+  <section class="relative">
     <h2
       class="mx-auto mt-[var(--section-gap)] mb-[18px] w-[min(var(--main-column-width),calc(100%-calc(var(--frame-gutter)*2)))] font-[var(--display-font)] text-[32px] leading-[0.92] tracking-[0.06em] uppercase text-[#0a223a] min-[810px]:text-[44px] min-[1310px]:text-[54px]"
     >
       Technical Skills
     </h2>
     <div class="relative overflow-visible pt-2 pb-[22px]">
-      <div class="w-screen px-3 pt-[10px] pb-2 min-[810px]:px-[var(--frame-gutter)]">
+      <div
+        class="mx-auto w-[min(var(--main-column-width),calc(100%-calc(var(--frame-gutter)*2)))] pt-[10px] pb-2"
+      >
         <div
-          class="flex flex-wrap items-start justify-center gap-x-2 gap-y-3 overflow-visible"
+          class="flex flex-wrap items-start justify-start gap-x-2 gap-y-3 overflow-visible"
         >
           <article
             v-for="skill in skillCards"
