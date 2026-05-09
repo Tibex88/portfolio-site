@@ -675,43 +675,44 @@ h2 {
   opacity: 1;
 }
 
-.custom-cursor__arrow {
+.custom-cursor__tool {
   position: absolute;
-  top: -1px;
-  left: -1px;
-  width: 0;
-  height: 0;
-  border-left: 12px solid #fff;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  filter: drop-shadow(0 0 0 #000) drop-shadow(2px 2px 0 #000);
+  top: -12px;
+  left: -10px;
+  width: 62px;
+  height: 62px;
+  opacity: 0;
+  transform-origin: 16px 18px;
+  transition:
+    opacity 140ms ease,
+    transform 180ms ease,
+    filter 180ms ease;
+  filter: drop-shadow(0 0 0 #050505) drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.5));
 }
 
-.custom-cursor__chip {
-  position: absolute;
-  top: 14px;
-  left: 18px;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: #000;
-  color: #fff;
-  font-family: "Arial Narrow", Arial, Helvetica, sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.custom-cursor.is-marker .custom-cursor__tool--marker,
+.custom-cursor.is-eraser .custom-cursor__tool--eraser {
+  opacity: 1;
 }
 
-.custom-cursor.is-inspect .custom-cursor__arrow {
-  transform: scale(1.08) rotate(-8deg);
+.custom-cursor.is-marker .custom-cursor__tool--marker {
+  transform: rotate(-12deg) scale(1);
 }
 
-.custom-cursor.is-open .custom-cursor__arrow {
-  transform: scale(0.96) rotate(12deg);
+.custom-cursor.is-eraser .custom-cursor__tool--eraser {
+  transform: rotate(18deg) scale(1);
 }
 
-.custom-cursor.is-drag .custom-cursor__arrow {
-  transform: scale(1.18);
+.custom-cursor.is-inspect .custom-cursor__tool {
+  transform: rotate(8deg) scale(1.02);
+}
+
+.custom-cursor.is-open .custom-cursor__tool {
+  transform: rotate(22deg) scale(0.98);
+}
+
+.custom-cursor.is-drag .custom-cursor__tool {
+  transform: rotate(-4deg) scale(1.08);
 }
 
 .portfolio-footer {

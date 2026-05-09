@@ -13,7 +13,14 @@ const { aboutContent, activeOverlay } = storeToRefs(store)
     @click.self="store.closeOverlay()"
   >
     <div class="about-overlay__panel">
-      <button class="about-overlay__close interactive-target" type="button" @click="store.closeOverlay()">
+      <button
+        class="about-overlay__close interactive-target"
+        type="button"
+        data-cursor-mode="open"
+        @mouseenter="store.setCursorMode('open')"
+        @mouseleave="store.setCursorMode('default')"
+        @click="store.closeOverlay()"
+      >
         {{ aboutContent.title }}
       </button>
       <div class="about-overlay__body">
