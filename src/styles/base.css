@@ -590,7 +590,7 @@ h2 {
   position: absolute;
   top: 0;
   left: 0;
-  transform: rotate(-12deg);
+  transform: rotate(-3deg);
   transform-origin: left center;
 }
 
@@ -695,7 +695,7 @@ h2 {
 }
 
 .custom-cursor.is-marker .custom-cursor__tool--marker {
-  transform: rotate(-12deg) scale(1);
+  transform: rotate(18deg) scale(1);
 }
 
 .custom-cursor.is-eraser .custom-cursor__tool--eraser {
