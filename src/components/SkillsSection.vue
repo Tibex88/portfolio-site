@@ -15,18 +15,21 @@ import {
   Zap,
 } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
-import { type Component, computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { type Component, computed } from 'vue'
 import { usePortfolioStore } from '@/stores/portfolio'
 import awsIcon from '@/assets/generated/skill-icons/aws.svg'
 import cppIcon from '@/assets/generated/skill-icons/cpp.svg'
 import dockerIcon from '@/assets/generated/skill-icons/docker.svg'
 import ec2Icon from '@/assets/generated/skill-icons/ec2.svg'
-import graphqlIcon from '@/assets/generated/skill-icons/graphql.svg'
+import graphmodelingIcon from '@/assets/generated/skill-icons/graphmodeling.svg'
 import javaIcon from '@/assets/generated/skill-icons/java.svg'
 import javascriptIcon from '@/assets/generated/skill-icons/javascript.svg'
 import linuxIcon from '@/assets/generated/skill-icons/linux.svg'
 import mongodbIcon from '@/assets/generated/skill-icons/mongodb.svg'
 import mysqlIcon from '@/assets/generated/skill-icons/mysql.svg'
+import sqliteIcon from '@/assets/generated/skill-icons/sqlite.svg'
+import neo4jIcon from '@/assets/generated/skill-icons/neo4j.svg'
+import vbIcon from '@/assets/generated/skill-icons/virtualbox.svg'
 import nestjsIcon from '@/assets/generated/skill-icons/nestjs.svg'
 import nodejsIcon from '@/assets/generated/skill-icons/nodejs.svg'
 import openaiIcon from '@/assets/generated/skill-icons/openai.svg'
@@ -35,9 +38,6 @@ import typescriptIcon from '@/assets/generated/skill-icons/typescript.svg'
 
 const store = usePortfolioStore()
 const { skillGroupItems } = storeToRefs(store)
-const scrollFrame = ref<HTMLElement | null>(null)
-const scrollDirection = ref<'left' | 'right'>('right')
-const showScrollCue = ref(false)
 
 type SkillVisual = {
   iconSrc?: string
@@ -55,19 +55,19 @@ const skillVisualMap: Record<string, SkillVisual> = {
   'REST APIs': { iconComponent: Waypoints },
   'Modular System Design': { iconComponent: Blocks },
   MySQL: { iconSrc: mysqlIcon },
-  SQLite: { iconComponent: Database },
+  SQLite: { iconSrc: sqliteIcon },
   MongoDB: { iconSrc: mongodbIcon },
-  Neo4j: { iconComponent: ChartNetwork },
+  Neo4j: { iconSrc: neo4jIcon },
   Pinecone: { iconComponent: DatabaseZap },
   Cypher: { iconComponent: Network },
-  'Graph Modeling': { iconSrc: graphqlIcon },
+  'Graph Modeling': { iconSrc: graphmodelingIcon },
   'AWS EC2': { iconSrc: ec2Icon },
   S3: { iconSrc: awsIcon },
   Lambda: { iconComponent: Zap },
   Docker: { iconSrc: dockerIcon },
   Linux: { iconSrc: linuxIcon },
-  VirtualBox: { iconComponent: Monitor },
-  'Hyper-V': { iconComponent: Monitor },
+  VirtualBox: { iconSrc: vbIcon },
+  // 'Hyper-V': { iconComponent: Monitor },
   'Symbolic / Hybrid AI': { iconComponent: BrainCircuit },
   RAG: { iconComponent: DatabaseZap },
   'Agentic Systems': { iconComponent: Bot },
@@ -90,35 +90,6 @@ const skillCards = computed(() =>
     })),
   ),
 )
-
-function updateScrollCue() {
-  const element = scrollFrame.value
-  if (!element) return
-
-  const maxScrollLeft = Math.max(0, element.scrollWidth - element.clientWidth)
-  if (maxScrollLeft <= 8) {
-    showScrollCue.value = false
-    return
-  }
-
-  showScrollCue.value = true
-  scrollDirection.value = element.scrollLeft >= maxScrollLeft - 8 ? 'left' : 'right'
-}
-
-function handleResize() {
-  updateScrollCue()
-}
-
-onMounted(() => {
-  updateScrollCue()
-  scrollFrame.value?.addEventListener('scroll', updateScrollCue, { passive: true })
-  window.addEventListener('resize', handleResize)
-})
-
-onBeforeUnmount(() => {
-  scrollFrame.value?.removeEventListener('scroll', updateScrollCue)
-  window.removeEventListener('resize', handleResize)
-})
 </script>
 
 <template>
@@ -129,66 +100,41 @@ onBeforeUnmount(() => {
       Technical Skills
     </h2>
     <div class="relative overflow-visible pt-2 pb-[22px]">
-      <button
-        v-if="showScrollCue"
-        class="pointer-events-none absolute top-1/2 z-[5] flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--accent)] text-[#f5f1e8] shadow-[0_4px_0_rgba(0,0,0,0.18)]"
-        :class="scrollDirection === 'right' ? 'right-4' : 'left-4'"
-        type="button"
-        aria-hidden="true"
-      >
-        <svg
-          class="h-6 w-6"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            :d="scrollDirection === 'right' ? 'M8 5l8 7-8 7' : 'M16 5l-8 7 8 7'"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2.8"
-          />
-        </svg>
-      </button>
-      <div
-        ref="scrollFrame"
-        class="mt-[-22px] w-screen overflow-x-auto overflow-y-hidden pt-[22px] pb-2"
-      >
+      <div class="w-screen px-3 pt-[10px] pb-2 min-[810px]:px-[var(--frame-gutter)]">
         <div
-          class="grid min-w-max auto-cols-[clamp(240px,19vw,320px)] grid-flow-col grid-rows-[repeat(2,max-content)] items-start gap-5 overflow-visible px-6 pt-[14px] pb-5 min-[810px]:auto-cols-[clamp(260px,22vw,340px)] min-[810px]:px-[var(--frame-gutter)] min-[1310px]:auto-cols-[clamp(280px,19vw,360px)] max-[809px]:px-3"
+          class="flex flex-wrap items-start justify-center gap-x-2 gap-y-3 overflow-visible"
         >
           <article
             v-for="skill in skillCards"
             :key="skill.id"
-            class="group/skill relative min-h-[190px] self-start overflow-visible bg-transparent px-4 pt-4 pb-[10px]"
+            class="group/skill skills-card-scale relative h-[calc(124px*var(--skill-card-scale))] w-[calc(124px*var(--skill-card-scale))] self-start overflow-visible bg-transparent px-[calc(7px*var(--skill-card-scale))] pt-[calc(7px*var(--skill-card-scale))] pb-[calc(4px*var(--skill-card-scale))]"
             :style="{ transform: `rotate(${skill.tilt})` }"
           >
-            <span class="absolute top-[14px] left-2 z-[3] h-[clamp(14px,5vw,20px)] w-[clamp(56px,22%,78px)] rotate-[-42deg] bg-[#050505]" />
-            <span class="absolute top-[14px] right-2 z-[3] h-[clamp(14px,5vw,20px)] w-[clamp(56px,22%,78px)] rotate-[42deg] bg-[#050505]" />
-            <span class="absolute bottom-[6px] left-2 z-[3] h-[clamp(14px,5vw,20px)] w-[clamp(56px,22%,78px)] rotate-[42deg] bg-[#050505]" />
-            <span class="absolute right-2 bottom-[6px] z-[3] h-[clamp(14px,5vw,20px)] w-[clamp(56px,22%,78px)] rotate-[-42deg] bg-[#050505]" />
-            <div class="flex min-h-[160px] items-center justify-center border-[3px] border-[rgba(0,0,0,0.85)] bg-[rgba(228,237,220,0.96)] px-5 py-6 text-center">
+            <span class="absolute top-[calc(8px*var(--skill-card-scale))] left-[calc(5px*var(--skill-card-scale))] z-[3] h-[calc(12px*var(--skill-card-scale))] w-[calc(34px*var(--skill-card-scale))] rotate-[-42deg] bg-[#050505]" />
+            <span class="absolute top-[calc(8px*var(--skill-card-scale))] right-[calc(5px*var(--skill-card-scale))] z-[3] h-[calc(12px*var(--skill-card-scale))] w-[calc(34px*var(--skill-card-scale))] rotate-[42deg] bg-[#050505]" />
+            <span class="absolute bottom-[calc(3px*var(--skill-card-scale))] left-[calc(5px*var(--skill-card-scale))] z-[3] h-[calc(12px*var(--skill-card-scale))] w-[calc(34px*var(--skill-card-scale))] rotate-[42deg] bg-[#050505]" />
+            <span class="absolute right-[calc(5px*var(--skill-card-scale))] bottom-[calc(3px*var(--skill-card-scale))] z-[3] h-[calc(12px*var(--skill-card-scale))] w-[calc(34px*var(--skill-card-scale))] rotate-[-42deg] bg-[#050505]" />
+            <div class="flex h-full items-center justify-center border-[3px] border-[rgba(0,0,0,0.85)] bg-[rgba(228,237,220,0.96)] px-[calc(10px*var(--skill-card-scale))] py-[calc(10px*var(--skill-card-scale))] text-center">
               <img
                 v-if="skill.visual.iconSrc"
                 :src="skill.visual.iconSrc"
                 :alt="skill.title"
-                class="h-[calc(64px*var(--body-text-scale))] w-[calc(64px*var(--body-text-scale))] object-contain min-[810px]:h-[calc(82px*var(--body-text-scale))] min-[810px]:w-[calc(82px*var(--body-text-scale))] min-[1310px]:h-[calc(94px*var(--body-text-scale))] min-[1310px]:w-[calc(94px*var(--body-text-scale))]"
+                class="h-[calc(42px*var(--skill-card-scale))] w-[calc(42px*var(--skill-card-scale))] object-contain"
               />
               <component
                 :is="skill.visual.iconComponent"
                 v-else
-                class="h-[calc(64px*var(--body-text-scale))] w-[calc(64px*var(--body-text-scale))] text-[#050505] min-[810px]:h-[calc(82px*var(--body-text-scale))] min-[810px]:w-[calc(82px*var(--body-text-scale))] min-[1310px]:h-[calc(94px*var(--body-text-scale))] min-[1310px]:w-[calc(94px*var(--body-text-scale))]"
+                class="h-[calc(42px*var(--skill-card-scale))] w-[calc(42px*var(--skill-card-scale))] text-[#050505]"
                 :stroke-width="2.4"
                 aria-hidden="true"
               />
               <p
-                class="pointer-events-none absolute top-[-20px] left-1/2 z-[4] m-0 -translate-x-1/2 translate-y-[-8px] rotate-[-2deg] rounded-[18px] bg-[var(--accent)] px-4 pt-2 pb-[10px] whitespace-nowrap font-['Brush_Script_MT','Segoe_Script','Marker_Felt',cursive] text-[calc(26px*var(--body-text-scale))] leading-none tracking-[0.02em] text-[#050505] uppercase opacity-0 shadow-[0_4px_0_rgba(0,0,0,0.16)] transition duration-180 ease-[ease] group-hover/skill:translate-y-0 group-hover/skill:rotate-0 group-hover/skill:opacity-100 min-[810px]:text-[calc(30px*var(--body-text-scale))] min-[1310px]:text-[calc(34px*var(--body-text-scale))]"
+                class="pointer-events-none absolute top-[-18px] left-1/2 z-[4] m-0 -translate-x-1/2 translate-y-[-8px] rotate-[-2deg] rounded-[18px] bg-[var(--accent)] px-3 pt-2 pb-[8px] whitespace-nowrap font-['Brush_Script_MT','Segoe_Script','Marker_Felt',cursive] text-[calc(16px*var(--skill-card-scale))] leading-none tracking-[0.02em] text-[#050505] uppercase opacity-0 shadow-[0_4px_0_rgba(0,0,0,0.16)] transition duration-180 ease-[ease] group-hover/skill:translate-y-0 group-hover/skill:rotate-0 group-hover/skill:opacity-100"
               >
                 {{ skill.group }}
               </p>
               <p
-                class="pointer-events-none absolute bottom-[-20px] left-1/2 z-[4] m-0 -translate-x-1/2 translate-y-[8px] rotate-[2deg] rounded-[18px] bg-[var(--accent)] px-4 pt-2 pb-[10px] whitespace-nowrap font-['Brush_Script_MT','Segoe_Script','Marker_Felt',cursive] text-[calc(22px*var(--body-text-scale))] leading-none tracking-[0.01em] text-[#050505] normal-case opacity-0 shadow-[0_4px_0_rgba(0,0,0,0.16)] transition duration-180 ease-[ease] group-hover/skill:translate-y-0 group-hover/skill:rotate-0 group-hover/skill:opacity-100 min-[810px]:text-[calc(25px*var(--body-text-scale))] min-[1310px]:text-[calc(28px*var(--body-text-scale))]"
+                class="pointer-events-none absolute bottom-[-18px] left-1/2 z-[4] m-0 -translate-x-1/2 translate-y-[8px] rotate-[2deg] rounded-[18px] bg-[var(--accent)] px-3 pt-2 pb-[8px] whitespace-nowrap font-['Brush_Script_MT','Segoe_Script','Marker_Felt',cursive] text-[calc(14px*var(--skill-card-scale))] leading-none tracking-[0.01em] text-[#050505] normal-case opacity-0 shadow-[0_4px_0_rgba(0,0,0,0.16)] transition duration-180 ease-[ease] group-hover/skill:translate-y-0 group-hover/skill:rotate-0 group-hover/skill:opacity-100"
               >
                 {{ skill.title }}
               </p>

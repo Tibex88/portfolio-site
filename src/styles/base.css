@@ -18,6 +18,7 @@
   --content-max: max(var(--content-width), 1px);
   --main-column-width: min(var(--content-max), 1000px);
   --body-text-scale: 0.8;
+  --skill-card-scale: 0.8;
   --section-gap: 28px;
   --card-radius: 18px;
   --display-font: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -200,7 +201,7 @@ h2 {
 }
 
 .hero-board__content {
-  display: block;
+  display: inline-block;
 }
 
 .hero-board__title-block {
@@ -485,7 +486,7 @@ h2 {
 }
 
 .project-card__surface {
-  position: relative;
+  /* position: relative; */
   /* min-height: 460px; */
   padding: 24px 22px 20px;
   display: flex;
@@ -563,6 +564,37 @@ h2 {
   margin-bottom: 10px;
 }
 
+.project-card__summary::before {
+  content: "Summary"; 
+}
+
+.project-card__impact::before {
+  content: "Impact";
+}
+
+.project-card__summary
+.project-card__impact {
+  position: relative;
+  padding-left: 12px;
+}
+
+.project-card__summary::before,
+.project-card__impact::before {
+  display: block;
+  color: var(--accent);
+  font-family: var(--ui-font);
+  font-size: calc(16px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  rotate: -12deg;
+  position: absolute;
+  margin-bottom: 6px;
+  bottom: 20px;
+
+}
+
 .project-card__impact {
   max-width: 16rem;
   font-size: calc(14px * var(--body-text-scale));
@@ -573,6 +605,27 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  /* margin-top: auto; */
+}
+
+.project-card__tag {
+  color: rgba(181, 12, 12, 0.7);
+  margin: auto;
+  padding: 12px;
+  text-transform: uppercase;
+  /*  */
+  padding: 6px 10px;
+  /* border: 1px solid rgba(0, 0, 0, 0.18); */
+  /* background: rgba(255, 255, 255, 0.4); */
+  font-family: "Arial Narrow", Arial, Helvetica, sans-serif;
+  font-size: calc(14px * var(--body-text-scale));
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.project-card__tag::before {
+  display: contents;
+  content: "#";
   /* margin-top: auto; */
 }
 
