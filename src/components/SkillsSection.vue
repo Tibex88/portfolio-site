@@ -1,23 +1,15 @@
 <script setup lang="ts">
 import {
-  Binary,
   Blocks,
   Bot,
   BrainCircuit,
-  Braces,
   ChartNetwork,
-  Cloud,
-  Code,
-  Container,
-  Cpu,
   Database,
   DatabaseZap,
-  FileCode,
   HardDrive,
   MessageSquare,
   Monitor,
   Network,
-  Server,
   Terminal,
   Waypoints,
   Zap,
@@ -25,6 +17,21 @@ import {
 import { storeToRefs } from 'pinia'
 import { type Component, computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { usePortfolioStore } from '@/stores/portfolio'
+import awsIcon from '@/assets/generated/skill-icons/aws.svg'
+import cppIcon from '@/assets/generated/skill-icons/cpp.svg'
+import dockerIcon from '@/assets/generated/skill-icons/docker.svg'
+import ec2Icon from '@/assets/generated/skill-icons/ec2.svg'
+import graphqlIcon from '@/assets/generated/skill-icons/graphql.svg'
+import javaIcon from '@/assets/generated/skill-icons/java.svg'
+import javascriptIcon from '@/assets/generated/skill-icons/javascript.svg'
+import linuxIcon from '@/assets/generated/skill-icons/linux.svg'
+import mongodbIcon from '@/assets/generated/skill-icons/mongodb.svg'
+import mysqlIcon from '@/assets/generated/skill-icons/mysql.svg'
+import nestjsIcon from '@/assets/generated/skill-icons/nestjs.svg'
+import nodejsIcon from '@/assets/generated/skill-icons/nodejs.svg'
+import openaiIcon from '@/assets/generated/skill-icons/openai.svg'
+import pythonIcon from '@/assets/generated/skill-icons/python.svg'
+import typescriptIcon from '@/assets/generated/skill-icons/typescript.svg'
 
 const store = usePortfolioStore()
 const { skillGroupItems } = storeToRefs(store)
@@ -32,39 +39,44 @@ const scrollFrame = ref<HTMLElement | null>(null)
 const scrollDirection = ref<'left' | 'right'>('right')
 const showScrollCue = ref(false)
 
-const skillIconMap: Record<string, Component> = {
-  Python: FileCode,
-  JavaScript: Braces,
-  TypeScript: Code,
-  'Node.js': Server,
-  'C++': Cpu,
-  Java: FileCode,
-  NestJS: Blocks,
-  'REST APIs': Waypoints,
-  'Modular System Design': Blocks,
-  MySQL: Database,
-  SQLite: Database,
-  MongoDB: Database,
-  Neo4j: ChartNetwork,
-  Pinecone: DatabaseZap,
-  Cypher: Binary,
-  'Graph Modeling': Network,
-  'AWS EC2': Cloud,
-  S3: HardDrive,
-  Lambda: Zap,
-  Docker: Container,
-  Linux: Terminal,
-  VirtualBox: Monitor,
-  'Hyper-V': Monitor,
-  'Symbolic / Hybrid AI': BrainCircuit,
-  RAG: DatabaseZap,
-  'Agentic Systems': Bot,
-  'Knowledge Graphs': ChartNetwork,
-  'Prompt Engineering': MessageSquare,
+type SkillVisual = {
+  iconSrc?: string
+  iconComponent?: Component
 }
 
-function resolveSkillIcon(title: string) {
-  return skillIconMap[title] ?? Blocks
+const skillVisualMap: Record<string, SkillVisual> = {
+  Python: { iconSrc: pythonIcon },
+  JavaScript: { iconSrc: javascriptIcon },
+  TypeScript: { iconSrc: typescriptIcon },
+  'Node.js': { iconSrc: nodejsIcon },
+  'C++': { iconSrc: cppIcon },
+  Java: { iconSrc: javaIcon },
+  NestJS: { iconSrc: nestjsIcon },
+  'REST APIs': { iconComponent: Waypoints },
+  'Modular System Design': { iconComponent: Blocks },
+  MySQL: { iconSrc: mysqlIcon },
+  SQLite: { iconComponent: Database },
+  MongoDB: { iconSrc: mongodbIcon },
+  Neo4j: { iconComponent: ChartNetwork },
+  Pinecone: { iconComponent: DatabaseZap },
+  Cypher: { iconComponent: Network },
+  'Graph Modeling': { iconSrc: graphqlIcon },
+  'AWS EC2': { iconSrc: ec2Icon },
+  S3: { iconSrc: awsIcon },
+  Lambda: { iconComponent: Zap },
+  Docker: { iconSrc: dockerIcon },
+  Linux: { iconSrc: linuxIcon },
+  VirtualBox: { iconComponent: Monitor },
+  'Hyper-V': { iconComponent: Monitor },
+  'Symbolic / Hybrid AI': { iconComponent: BrainCircuit },
+  RAG: { iconComponent: DatabaseZap },
+  'Agentic Systems': { iconComponent: Bot },
+  'Knowledge Graphs': { iconComponent: ChartNetwork },
+  'Prompt Engineering': { iconSrc: openaiIcon },
+}
+
+function resolveSkillVisual(title: string) {
+  return skillVisualMap[title] ?? { iconComponent: Terminal }
 }
 
 const skillCards = computed(() =>
@@ -73,7 +85,7 @@ const skillCards = computed(() =>
       id: `${group.id}-${index}`,
       title: item,
       group: group.title,
-      icon: resolveSkillIcon(item),
+      visual: resolveSkillVisual(item),
       tilt: index % 3 === 0 ? '-1.2deg' : index % 3 === 1 ? '0.8deg' : '-0.45deg',
     })),
   ),
@@ -157,8 +169,15 @@ onBeforeUnmount(() => {
             <span class="absolute bottom-[6px] left-2 z-[3] h-[clamp(14px,5vw,20px)] w-[clamp(56px,22%,78px)] rotate-[42deg] bg-[#050505]" />
             <span class="absolute right-2 bottom-[6px] z-[3] h-[clamp(14px,5vw,20px)] w-[clamp(56px,22%,78px)] rotate-[-42deg] bg-[#050505]" />
             <div class="flex min-h-[160px] items-center justify-center border-[3px] border-[rgba(0,0,0,0.85)] bg-[rgba(228,237,220,0.96)] px-5 py-6 text-center">
+              <img
+                v-if="skill.visual.iconSrc"
+                :src="skill.visual.iconSrc"
+                :alt="skill.title"
+                class="h-[calc(64px*var(--body-text-scale))] w-[calc(64px*var(--body-text-scale))] object-contain min-[810px]:h-[calc(82px*var(--body-text-scale))] min-[810px]:w-[calc(82px*var(--body-text-scale))] min-[1310px]:h-[calc(94px*var(--body-text-scale))] min-[1310px]:w-[calc(94px*var(--body-text-scale))]"
+              />
               <component
-                :is="skill.icon"
+                :is="skill.visual.iconComponent"
+                v-else
                 class="h-[calc(64px*var(--body-text-scale))] w-[calc(64px*var(--body-text-scale))] text-[#050505] min-[810px]:h-[calc(82px*var(--body-text-scale))] min-[810px]:w-[calc(82px*var(--body-text-scale))] min-[1310px]:h-[calc(94px*var(--body-text-scale))] min-[1310px]:w-[calc(94px*var(--body-text-scale))]"
                 :stroke-width="2.4"
                 aria-hidden="true"
