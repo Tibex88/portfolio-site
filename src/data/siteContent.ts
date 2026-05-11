@@ -51,6 +51,7 @@ export interface ProjectItem {
   role: string
   impact: string
   stack: string[]
+  tag: string[]
   confidential?: boolean
   cursorMode: CursorMode
   assetIds: string[]
@@ -94,13 +95,14 @@ export interface SkillGroup {
 export const projects: ProjectItem[] = [
   {
     id: 'et-delivery',
-    title: 'ET Delivery',
+    title: 'ET-Delivery',
     timeline: 'Dec 2024 - Jul 2025',
     summary:
       'Dispatch, booking lifecycle, payments, logistics reporting, and backend operations for a production-oriented mobility platform.',
     role: 'Sole backend engineer',
     impact: 'Booking, routing, payment, and operations infrastructure.',
     stack: ['NestJS', 'TypeScript', 'MySQL', 'TypeORM', 'Docker', 'Firebase'],
+    tag: ['logistics', 'payments', 'operations'],
     confidential: true,
     cursorMode: 'inspect',
     assetIds: ['asset-project-et-delivery'],
@@ -127,13 +129,14 @@ export const projects: ProjectItem[] = [
   },
   {
     id: 'Navi-Thera',
-    title: 'Navi Thera ',
+    title: 'NaviThera ',
     timeline: 'Apr 2025 - Apr 2026',
     summary:
       'Sessions, subscriptions, chat/call infrastructure, therapist operations, and healthcare integration planning.',
     role: 'Sole backend engineer',
     impact: 'Real-time coordination, scheduling, subscriptions, and care flows.',
     stack: ['NestJS', 'MySQL', 'WebSockets', 'LiveKit', 'Firebase', 'Docker'],
+    tag: ['healthcare', 'real-time', 'operations'],
     confidential: true,
     cursorMode: 'open',
     assetIds: ['asset-project-therapy'],
@@ -168,6 +171,7 @@ export const projects: ProjectItem[] = [
     role: 'Sole backend engineer',
     impact: 'Transactional commerce plus graph-based recommendation signals.',
     stack: ['NestJS', 'MySQL', 'Neo4j', 'Cypher', 'Docker'],
+    tag: ['e-commerce', 'recommendation', 'knowledge graphs'],
     cursorMode: 'drag',
     assetIds: ['asset-project-ebp'],
     hoverOverlays: [
@@ -341,17 +345,17 @@ export const skillGroups: SkillGroup[] = [
   {
     id: 'backend',
     title: 'Frameworks & Backend',
-    items: ['NestJS', 'REST APIs', 'Modular System Design'],
+    items: ['NestJS'],
   },
   {
     id: 'data',
     title: 'Databases & Knowledge Systems',
-    items: ['MySQL', 'SQLite', 'MongoDB', 'Neo4j', 'Pinecone', 'Cypher', 'Graph Modeling'],
+    items: ['MySQL', 'SQLite', 'MongoDB', 'Neo4j', 'Graph Modeling'],
   },
   {
     id: 'cloud',
     title: 'Cloud & Infrastructure',
-    items: ['AWS EC2', 'S3', 'Lambda', 'Docker', 'Linux', 'VirtualBox', 'Hyper-V'],
+    items: ['Docker', 'Linux', 'VirtualBox'],
   },
   {
     id: 'ai',

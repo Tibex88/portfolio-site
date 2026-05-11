@@ -596,7 +596,7 @@ h2 {
 .project-card__impact::before {
   display: block;
   color: var(--accent);
-  font-family: var(--ui-font);
+  font-family: var(--font-role-project-copy);
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.08em;

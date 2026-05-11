@@ -86,6 +86,17 @@ function resetCard() {
           {{ item }}
         </span>
       </div>
+
+      <div class="">
+        <span
+          v-for="item in project.tag"
+          :key="item"
+          class="project-card__tag"
+        >
+          {{ item }}
+        </span>
+      </div>
+
     </div>
   </article>
 </template>
