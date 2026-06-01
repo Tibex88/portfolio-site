@@ -7,8 +7,10 @@ const { experienceItems } = storeToRefs(store)
 </script>
 
 <template>
-  <section class="timeline-section">
-    <h2 class="section-title">Experience</h2>
+  <section class="py-6 min-[810px]:py-8 min-[1310px]:py-10">
+    <h2 class="mb-5 font-[var(--display-font)] text-[34px] leading-[0.92] tracking-[0.06em] uppercase text-[#0a223a] min-[810px]:mb-6 min-[810px]:text-[44px] min-[1310px]:mb-7 min-[1310px]:text-[56px]">
+      Experience
+    </h2>
     <div class="timeline-list">
       <article v-for="item in experienceItems" :key="item.id" class="">
         <div class="timeline-item__content reference-card timeline-item">
