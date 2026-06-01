@@ -23,12 +23,7 @@ const rightInfoItems = computed(() => {
 
 <template>
   <section
-    class=" mb-[var(--section-gap)] rounded-[var(--card-radius)] border-[3px] border-[#0a0a0a] bg-[var(--reference-dark)] px-[18px] pt-12 pb-[18px] text-[var(--reference-light)] shadow-[inset_0_0_0_3px_rgba(0,0,0,0.08)] min-[810px]:px-6 min-[810px]:pt-14 min-[810px]:pb-5 min-[1310px]:px-7 min-[1310px]:pt-[62px] min-[1310px]:pb-[18px]"
-    style="
-    justify-content: center;
-    display: grid;
-    align-items: center;"
-  >
+    class="grid items-center justify-center mb-[var(--section-gap)] rounded-[var(--card-radius)] border-[3px] border-[#0a0a0a] bg-[var(--reference-dark)] px-[18px] pt-12 pb-[18px] text-[var(--reference-light)] shadow-[inset_0_0_0_3px_rgba(0,0,0,0.08)] min-[810px]:px-6 min-[810px]:pt-14 min-[810px]:pb-5 min-[1310px]:px-7 min-[1310px]:pt-[62px] min-[1310px]:pb-[18px]">
     <p
       class="mb-[14px] max-w-full text-center font-[var(--ui-font)] text-[calc(16px*var(--body-text-scale))] font-bold uppercase tracking-[0.08em] text-[var(--reference-light)] min-[810px]:text-[calc(18px*var(--body-text-scale))]"
     >
@@ -37,7 +32,7 @@ const rightInfoItems = computed(() => {
 
     <div class="hero-board__content">
       <div class="hero-board__title-block border-b-[2px] border-b-[rgba(194,208,190,0.95)] pb-4 min-[810px]:border-b-0 min-[810px]:pb-0">
-        <p class="relative flex items-end justify-center text-[52px] gap-4 text-center max-[809px]:gap-[6px]">
+        <p class="relative min-[810px]: flex-wrap items-end justify-center text-[52px] gap-4 text-center max-[809px]:gap-[6px]">
           <span
             class="font-[var(--display-font)] text-[52px] leading-[0.88] tracking-[0.03em] uppercase "
           >

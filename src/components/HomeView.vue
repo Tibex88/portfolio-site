@@ -15,11 +15,13 @@ import SkillsSection from './SkillsSection.vue'
     <CustomCursor />
     <AboutOverlay />
     <HeroBoard />
-    <section class="block mb-[var(--section-gap)]">
-      <ProjectStream />
+    <section class="notebook-board">
+      <section class="block">
+        <ProjectStream />
+      </section>
+      <SkillsSection />
+      <ExperienceTimeline />
+      <PortfolioFooter />
     </section>
-    <SkillsSection />
-    <ExperienceTimeline />
-    <PortfolioFooter />
   </main>
 </template>
