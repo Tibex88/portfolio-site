@@ -84,7 +84,7 @@ const rightInfoItems = computed(() => {
           :class="{ 'is-static': !item.href }"
           :is="'a'"
           :href="item.href || undefined"
-          :target="item.href?.startsWith('http') ? '_blank' : undefined"
+          :target="item.href?.startsWith('http') || item.href?.endsWith('.pdf') ? '_blank' : undefined"
           rel="noreferrer"
           :data-cursor-mode="item.cursorMode || 'inspect'"
           @mouseenter="store.setCursorMode(item.cursorMode || 'inspect')"

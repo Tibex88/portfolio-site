@@ -1,3 +1,5 @@
+import licensedCvFile from '@/assets/files/Tibebe_Solomon_Licensed.pdf'
+
 export type CursorMode = 'default' | 'inspect' | 'open' | 'drag'
 
 export interface AssetAnnotation {
@@ -287,7 +289,7 @@ export const infoCards: InfoCardItem[] = [
     id: 'CV',
     label: 'History:',
     value: 'CV',
-    href: 'https://s3.amazonaws.com/attachments.angel.co/14361982-3f7c51015a5ef62706aec88495f42959.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIATAVHNKYQQXOZPIDU%2F20260601%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260601T160054Z&X-Amz-Expires=3223&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEgaCXVzLXdlc3QtMiJHMEUCIQCbAHizbqqygzagz2h3Fk8scwqbP1GkPyRfdKnhByYk2gIgDUJ1B%2Fw65ZwFh4%2FUA5YmCb9WUrQs2oJAVyAcxob1IJ0qjAUIERAAGgwyMDc1ODMyNzA0MzMiDHhi2qwr08s81gpauirpBH4Tw5ETzz3%2F03XzuWwlE5MwHYE40OVdpuHKPid7F7keA%2Fs6JJhd2f%2FmHBgPbhDQtikh5ilCm60Qy9nmmHECbEw%2FkaCcqr0GisyPws2GCpcqkLJWTpO9fkwhqL7wZHdWFM4OSEbfQL97xsE8sz8QkSLtXqbu8ufnpBNIT8Fwz%2BZP8kclthvlH3Py%2FMGwwA1Mvxb7NdQL%2B4ywyhK%2BqbFWFho4ht5ERs5qXqm4Wvygvm3q0sqFN5Z9qHToBZtZfs%2BdmlS6wjHOYp6X6AnTMBp55RfQBIuAdiZoDtbcYGH9RhrnADIaXvVW4UFc0j1S0lOB4kgcWhyiaMVbzMjNmlb1cSHrGLZs2NxJezgfI0emEwKdYn13UzxwM80kXJD1YnIVkguLnmlGs9Te2n1L0Ls4jOGr%2BZrSR%2FY5Ndwp2sH2Vt1TqkmZm5uplADL954x4FuXIFn0C%2Bs5GnXic5FFhOx2oVI%2BRBiUjC5kExTQHa04dDwyYbgWL%2FngfuCXsbjASHeSNIJOm%2Bw7BDCin2p%2BVxxJ0WiydN2W8nfBWVCmMcPDXynnybolUiuiyL515XkaxTOL2mszZq9UcuWGcGcsO%2B5it895WLyMYv3ni8Ldgog7jkJwzerhR%2B5Bp0IS%2Bkwo78kejgl%2BXwzd4W6lgiVxrUq%2BRiZnd4pkr2ntEKpCoBIl56MZryclE5KUOcgdnPfy4CROUE%2FJ0Sv4G1PPNEhbWnF8jLsbQsNbYgP7LIHqOb4ICftzdz4D7%2FHk5FIE56%2FsXJ0%2Bj4sJVS7xYyqw3Mn8Fn8iJ8xJ33UYGUHvPaxTDxi74yRG3tcRrnDNRAkzML3W9tAGOpgB6Mtia7py1CR002BlSYvub2taxuUBSBFUoGSKsQY%2FF85BcC2TDAsDSUPejOPC8Ala0Iw6AaP91Bnu06CLt9Bws2TM%2BmxHfTOD79STf0mWfj%2BOBas6Gt85zdR%2FY2Ku47NkmF4r8yfQMV5XN%2FVbmRS6D373mMRRML4yizXtoMrJgm%2Bp7%2BW9ODW6RJE3l9Ona15rPlEMXC54T0E%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=44a282b82af06ede2db0dd955db180c0a271d627bb68663b7febb45aa1332f9a',
+    href: licensedCvFile,
     cursorMode: 'inspect',
   },
 ]
