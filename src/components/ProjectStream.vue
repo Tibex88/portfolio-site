@@ -14,7 +14,7 @@ const { projectItems } = storeToRefs(store)
         Selected Projects
       </p>
     </div>
-    <div class="grid grid-cols-1 gap-[18px] sm:grid-cols-2">
+    <div class="grid grid-cols-1 gap-[18px] sm:grid-cols-2 mb-10">
       <ProjectCard
         v-for="(project, index) in projectItems"
         :key="project.id"

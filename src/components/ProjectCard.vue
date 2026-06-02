@@ -57,13 +57,13 @@ function resetCard() {
           
           {{ project.role }}
 
-          <span
+          <!-- <span
             v-if="project.confidential"
             class=""
             title="This project is confidential"
             aria-label="This project is confidential">
             🔒
-          </span>
+          </span> -->
 
         </p>
       </div>
