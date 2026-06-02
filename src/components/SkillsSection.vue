@@ -95,7 +95,7 @@ const skillCards = computed(() =>
 <template>
   <section class="relative">
     <h2
-      class="mx-auto mt-[calc(var(--section-gap)+18px)] mb-[18px] w-[min(var(--main-column-width),calc(100%-calc(var(--frame-gutter)*2)))] font-display text-[32px] leading-[0.92] tracking-[0.06em] uppercase text-ink md:text-[44px] xl:text-[54px]"
+      class="mx-auto mt-section-gap mb-[18px] w-[min(var(--main-column-width),calc(100%-calc(var(--frame-gutter)*2)))] font-display text-[32px] leading-[0.92] tracking-[0.06em] uppercase text-ink md:text-[44px] xl:text-[54px]"
     >
       Technical Skills
     </h2>
