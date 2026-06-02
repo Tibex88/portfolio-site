@@ -10,7 +10,7 @@ const { projectItems } = storeToRefs(store)
 <template>
   <section class="grid grid-cols-1 gap-[18px]">
     <div class="mb-1">
-      <p class="m-0 font-[var(--display-font)] text-[34px] leading-[0.92] tracking-[0.06em] uppercase text-[#0a223a] md:text-[44px] xl:text-[56px]">
+      <p class="m-0 font-display text-[34px] leading-[0.92] tracking-[0.06em] uppercase text-ink md:text-[44px] xl:text-[56px]">
         Selected Projects
       </p>
     </div>

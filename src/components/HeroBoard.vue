@@ -23,34 +23,34 @@ const rightInfoItems = computed(() => {
 
 <template>
   <section
-    class="grid items-center justify-center mb-[var(--section-gap)] rounded-[var(--card-radius)] border-[3px] border-[#0a0a0a] bg-[var(--reference-dark)] px-[18px] pt-12 pb-[18px] text-[var(--reference-light)] shadow-[inset_0_0_0_3px_rgba(0,0,0,0.08)] md:px-6 md:pt-14 md:pb-5 xl:px-7 xl:pt-[62px] xl:pb-[18px]">
+    class="mb-section-gap grid items-center justify-center rounded-card border-[3px] border-black bg-reference-dark px-hero-x pt-12 pb-hero-bottom text-reference-light shadow-inset-frame md:px-hero-x-md md:pt-14 md:pb-hero-bottom-md xl:px-hero-x-xl xl:pt-[62px] xl:pb-hero-bottom-xl">
     <p
-      class="mb-[14px] max-w-full text-center font-[var(--ui-font)] text-[calc(16px*var(--body-text-scale))] font-bold uppercase tracking-[0.08em] text-[var(--reference-light)] md:text-[calc(18px*var(--body-text-scale))]"
+      class="mb-[14px] max-w-full text-center font-ui text-[calc(16px*var(--body-text-scale))] font-bold uppercase tracking-[0.08em] text-reference-light md:text-[calc(18px*var(--body-text-scale))]"
     >
       {{ heroContent.eyebrow }}
     </p>
 
     <div class="hero-board__content">
       <div class="hero-board__title-block border-b-[2px] border-b-[rgba(194,208,190,0.95)] pb-4 md:border-b-0 md:pb-0">
-        <p class="relative items-end justify-center text-[52px] gap-4 text-center max-md:gap-[6px] md:flex-wrap">
+        <p class="relative items-end justify-center gap-hero-title-gap text-center text-[52px] max-md:gap-hero-title-gap-sm md:flex-wrap">
           <span
-            class="font-[var(--display-font)] text-[52px] leading-[0.88] tracking-[0.03em] uppercase "
+            class="font-display text-[52px] leading-[0.88] tracking-[0.03em] uppercase"
           >
             {{ heroContent.titleTop }}
           </span>
           <span
-            class=" mt-[-8px] block w-full rotate-[-7deg] select-none font-['Brush_Script_MT','Segoe_Script',cursive] text-[44px] leading-none text-[var(--accent)] md:absolute md:top-[38%] md:left-[34%] md:mt-0 md:inline-block md:w-auto md:text-[58px] xl:text-[74px]"
+            class="mt-[-8px] block w-full rotate-[-7deg] select-none font-script text-[44px] leading-none text-accent md:absolute md:top-[38%] md:left-[34%] md:mt-0 md:inline-block md:w-auto md:text-[58px] xl:text-[74px]"
           >
             {{ heroContent.overlayWord }}
           </span>
           <span
-            class="font-[var(--display-font)] text-[52px] leading-[0.88] tracking-[0.03em] uppercase"
+            class="font-display text-[52px] leading-[0.88] tracking-[0.03em] uppercase"
           >
             {{ heroContent.titleBottom }}
           </span>
         </p>
         <p
-          class="mt-2 text-center font-['Brush_Script_MT','Segoe_Script',cursive] text-[calc(28px*var(--body-text-scale))] text-[var(--reference-light)] md:text-[calc(32px*var(--body-text-scale))] xl:text-[calc(38px*var(--body-text-scale))]"
+          class="mt-2 text-center font-script text-[calc(28px*var(--body-text-scale))] text-reference-light md:text-[calc(32px*var(--body-text-scale))] xl:text-[calc(38px*var(--body-text-scale))]"
         >
           {{ heroContent.subtitle }}
         </p>
