@@ -10,7 +10,7 @@ import SkillsSection from './SkillsSection.vue'
 
 <template>
   <main
-    class="mx-auto min-h-screen w-[min(var(--main-column-width),calc(100%-calc(var(--frame-gutter)*2)))] px-0 pt-6 pb-8 min-[810px]:pt-7 min-[810px]:pb-10 min-[1310px]:pt-8"
+    class="mx-auto min-h-screen w-[min(var(--main-column-width),calc(100%-calc(var(--frame-gutter)*2)))] px-0 pt-6 pb-8 md:pt-7 md:pb-10 xl:pt-8"
   >
     <CustomCursor />
     <AboutOverlay />
