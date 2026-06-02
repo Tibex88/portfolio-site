@@ -10,11 +10,11 @@ const { projectItems } = storeToRefs(store)
 <template>
   <section class="grid grid-cols-1 gap-[18px]">
     <div class="mb-1">
-      <p class="m-0 font-[var(--display-font)] text-[34px] leading-[0.92] tracking-[0.06em] uppercase text-[#0a223a] min-[810px]:text-[44px] min-[1310px]:text-[56px]">
+      <p class="m-0 font-display text-[34px] leading-[0.92] tracking-[0.06em] uppercase text-ink md:text-[44px] xl:text-[56px]">
         Selected Projects
       </p>
     </div>
-    <div class="grid grid-cols-1 gap-[18px] min-[735px]:grid-cols-2 grid-cols-1">
+    <div class="grid grid-cols-1 gap-[18px] sm:grid-cols-2 mb-10">
       <ProjectCard
         v-for="(project, index) in projectItems"
         :key="project.id"

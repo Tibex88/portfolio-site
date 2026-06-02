@@ -95,7 +95,7 @@ const skillCards = computed(() =>
 <template>
   <section class="relative">
     <h2
-      class="mx-auto mt-[var(--section-gap)] mb-[18px] w-[min(var(--main-column-width),calc(100%-calc(var(--frame-gutter)*2)))] font-[var(--display-font)] text-[32px] leading-[0.92] tracking-[0.06em] uppercase text-[#0a223a] min-[810px]:text-[44px] min-[1310px]:text-[54px]"
+      class="mx-auto mt-section-gap mb-[18px] w-[min(var(--main-column-width),calc(100%-calc(var(--frame-gutter)*2)))] font-display text-[32px] leading-[0.92] tracking-[0.06em] uppercase text-ink md:text-[44px] xl:text-[54px]"
     >
       Technical Skills
     </h2>
@@ -109,34 +109,34 @@ const skillCards = computed(() =>
           <article
             v-for="skill in skillCards"
             :key="skill.id"
-            class="group/skill skills-card-scale relative h-[calc(124px*var(--skill-card-scale))] w-[calc(124px*var(--skill-card-scale))] self-start overflow-visible bg-transparent px-[calc(7px*var(--skill-card-scale))] pt-[calc(7px*var(--skill-card-scale))] pb-[calc(4px*var(--skill-card-scale))]"
+            class="group/skill skills-card-scale relative h-skill-card w-skill-card self-start overflow-visible bg-transparent px-skill-frame-x pt-skill-frame-top pb-skill-frame-bottom"
             :style="{ transform: `rotate(${skill.tilt})` }"
           >
-            <span class="absolute top-[calc(8px*var(--skill-card-scale))] left-[calc(5px*var(--skill-card-scale))] z-[3] h-[calc(12px*var(--skill-card-scale))] w-[calc(34px*var(--skill-card-scale))] rotate-[-42deg] bg-[#050505]" />
-            <span class="absolute top-[calc(8px*var(--skill-card-scale))] right-[calc(5px*var(--skill-card-scale))] z-[3] h-[calc(12px*var(--skill-card-scale))] w-[calc(34px*var(--skill-card-scale))] rotate-[42deg] bg-[#050505]" />
-            <span class="absolute bottom-[calc(3px*var(--skill-card-scale))] left-[calc(5px*var(--skill-card-scale))] z-[3] h-[calc(12px*var(--skill-card-scale))] w-[calc(34px*var(--skill-card-scale))] rotate-[42deg] bg-[#050505]" />
-            <span class="absolute right-[calc(5px*var(--skill-card-scale))] bottom-[calc(3px*var(--skill-card-scale))] z-[3] h-[calc(12px*var(--skill-card-scale))] w-[calc(34px*var(--skill-card-scale))] rotate-[-42deg] bg-[#050505]" />
-            <div class="flex h-full items-center justify-center border-[3px] border-[rgba(0,0,0,0.85)] bg-[rgba(228,237,220,0.96)] px-[calc(10px*var(--skill-card-scale))] py-[calc(10px*var(--skill-card-scale))] text-center">
+            <span class="absolute top-[calc(8px*var(--skill-card-scale))] left-[calc(5px*var(--skill-card-scale))] z-[3] h-tape-h w-tape-w rotate-[-42deg] bg-black" />
+            <span class="absolute top-[calc(8px*var(--skill-card-scale))] right-[calc(5px*var(--skill-card-scale))] z-[3] h-tape-h w-tape-w rotate-[42deg] bg-black" />
+            <span class="absolute bottom-[calc(3px*var(--skill-card-scale))] left-[calc(5px*var(--skill-card-scale))] z-[3] h-tape-h w-tape-w rotate-[42deg] bg-black" />
+            <span class="absolute right-[calc(5px*var(--skill-card-scale))] bottom-[calc(3px*var(--skill-card-scale))] z-[3] h-tape-h w-tape-w rotate-[-42deg] bg-black" />
+            <div class="flex h-full items-center justify-center border-[3px] border-ink-85 bg-paper-soft px-skill-pad-x py-skill-pad-y text-center">
               <img
                 v-if="skill.visual.iconSrc"
                 :src="skill.visual.iconSrc"
                 :alt="skill.title"
-                class="h-[calc(42px*var(--skill-card-scale))] w-[calc(42px*var(--skill-card-scale))] object-contain"
+                class="h-skill-icon w-skill-icon object-contain"
               />
               <component
                 :is="skill.visual.iconComponent"
                 v-else
-                class="h-[calc(42px*var(--skill-card-scale))] w-[calc(42px*var(--skill-card-scale))] text-[#050505]"
+                class="h-skill-icon w-skill-icon text-black"
                 :stroke-width="2.4"
                 aria-hidden="true"
               />
               <p
-                class="pointer-events-none absolute top-[-18px] left-1/2 z-[4] m-0 -translate-x-1/2 translate-y-[-8px] rotate-[-2deg] rounded-[18px] bg-[var(--accent)] px-3 pt-2 pb-[8px] whitespace-nowrap font-['Brush_Script_MT','Segoe_Script','Marker_Felt',cursive] text-[calc(16px*var(--skill-card-scale))] leading-none tracking-[0.02em] text-[#050505] uppercase opacity-0 shadow-[0_4px_0_rgba(0,0,0,0.16)] transition duration-180 ease-[ease] group-hover/skill:translate-y-0 group-hover/skill:rotate-0 group-hover/skill:opacity-100"
+                class="pointer-events-none absolute top-[-18px] left-1/2 z-[4] m-0 -translate-x-1/2 translate-y-[-8px] rotate-[-2deg] rounded-pill bg-accent px-3 pt-2 pb-[8px] whitespace-nowrap font-script text-[calc(16px*var(--skill-card-scale))] leading-none tracking-[0.02em] text-black uppercase opacity-0 shadow-card-lift transition duration-180 ease-[ease] group-hover/skill:translate-y-0 group-hover/skill:rotate-0 group-hover/skill:opacity-100"
               >
                 {{ skill.group }}
               </p>
               <p
-                class="pointer-events-none absolute bottom-[-18px] left-1/2 z-[4] m-0 -translate-x-1/2 translate-y-[8px] rotate-[2deg] rounded-[18px] bg-[var(--accent)] px-3 pt-2 pb-[8px] whitespace-nowrap font-['Brush_Script_MT','Segoe_Script','Marker_Felt',cursive] text-[calc(14px*var(--skill-card-scale))] leading-none tracking-[0.01em] text-[#050505] normal-case opacity-0 shadow-[0_4px_0_rgba(0,0,0,0.16)] transition duration-180 ease-[ease] group-hover/skill:translate-y-0 group-hover/skill:rotate-0 group-hover/skill:opacity-100"
+                class="pointer-events-none absolute bottom-[-18px] left-1/2 z-[4] m-0 -translate-x-1/2 translate-y-[8px] rotate-[2deg] rounded-pill bg-accent px-3 pt-2 pb-[8px] whitespace-nowrap font-script text-[calc(14px*var(--skill-card-scale))] leading-none tracking-[0.01em] text-black normal-case opacity-0 shadow-card-lift transition duration-180 ease-[ease] group-hover/skill:translate-y-0 group-hover/skill:rotate-0 group-hover/skill:opacity-100"
               >
                 {{ skill.title }}
               </p>
